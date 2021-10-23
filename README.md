@@ -1,2 +1,79 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # distionary
-R package for creating and evaluating standard univariate probability distributions.
+
+<!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/distionary)](https://CRAN.R-project.org/package=distionary)
+[![Codecov test
+coverage](https://codecov.io/gh/vincenzocoia/distionary/branch/main/graph/badge.svg)](https://codecov.io/gh/vincenzocoia/distionary?branch=main)
+[![R-CMD-check](https://github.com/vincenzocoia/distionary/workflows/R-CMD-check/badge.svg)](https://github.com/vincenzocoia/distionary/actions)
+<!-- badges: end -->
+
+The goal of distionary is to allow you to make and evaluate standard
+families of univariate probability distributions.
+
+## Installation
+
+distionary is not on CRAN yet. You can download the development version
+from GitHub with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("vincenzocoia/distionary")
+```
+
+## Example
+
+``` r
+library(distionary)
+```
+
+We can make distributions from standard families, like beta and Poisson:
+
+``` r
+# (d_beta <- dst_beta(2, 4))
+# (d_pois <- dst_pois(1.2))
+```
+
+You can also make your own family of distributions (see the vignette).
+
+We can also make empirical distributions from data:
+
+``` r
+# x <- c(4.1, 2.3, 3.4, 5.5, 1.0, 6.8)
+# (d_emp <- dst_empirical(x))
+```
+
+We can evaluate different distributional forms, such as the density or
+pmf:
+
+``` r
+# eval_density(d_beta, at = c(0.1, 0.2))
+# eval_pmf(d_pois, at = c(1, 1.5, 3))
+```
+
+Or, we can enframe the results in a tibble:
+
+``` r
+# enframe_cdf(d_beta, d_pois, d_emp, at = c(0.1, 0.6, 1.5, 3))
+```
+
+Evaluate properties of the distributions:
+
+``` r
+# mean(d_beta)
+# skewness(d_pois)
+# range(d_emp)
+```
+
+## Code of Conduct
+
+Please note that the distionary project is released with a [Contributor
+Code of
+Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.

@@ -18,19 +18,15 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/distionary)](https://CRAN.R-project.org/package=distionary)
+[![Codecov test coverage](https://codecov.io/gh/vincenzocoia/distionary/branch/main/graph/badge.svg)](https://codecov.io/gh/vincenzocoia/distionary?branch=main)
+[![R-CMD-check](https://github.com/vincenzocoia/distionary/workflows/R-CMD-check/badge.svg)](https://github.com/vincenzocoia/distionary/actions)
 <!-- badges: end -->
 
-The goal of distionary is to ...
+The goal of distionary is to allow you to make and evaluate standard families of univariate probability distributions.
 
 ## Installation
 
-You can install the released version of distionary from [CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("distionary")
-```
-
-And the development version from [GitHub](https://github.com/) with:
+distionary is not on CRAN yet. You can download the development version from GitHub with:
 
 ``` r
 # install.packages("devtools")
@@ -38,28 +34,47 @@ devtools::install_github("vincenzocoia/distionary")
 ```
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
+```{r}
 library(distionary)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+We can make distributions from standard families, like beta and Poisson:
 
-```{r cars}
-summary(cars)
+```{r}
+# (d_beta <- dst_beta(2, 4))
+# (d_pois <- dst_pois(1.2))
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/master/examples>.
+You can also make your own family of distributions (see the vignette). 
 
-You can also embed plots, for example:
+We can also make empirical distributions from data:
 
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r}
+# x <- c(4.1, 2.3, 3.4, 5.5, 1.0, 6.8)
+# (d_emp <- dst_empirical(x))
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+We can evaluate different distributional forms, such as the density or pmf:
+
+```{r}
+# eval_density(d_beta, at = c(0.1, 0.2))
+# eval_pmf(d_pois, at = c(1, 1.5, 3))
+```
+
+Or, we can enframe the results in a tibble:
+
+```{r}
+# enframe_cdf(d_beta, d_pois, d_emp, at = c(0.1, 0.6, 1.5, 3))
+```
+
+Evaluate properties of the distributions:
+
+```{r}
+# mean(d_beta)
+# skewness(d_pois)
+# range(d_emp)
+```
+
 
 ## Code of Conduct
 
