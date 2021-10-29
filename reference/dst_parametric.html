@@ -151,10 +151,12 @@ evaluated.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'>dst_parametric</span><span class='op'>(</span><span class='st'>"norm"</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>1</span>, .variable <span class='op'>=</span> <span class='st'>"continuous"</span><span class='op'>)</span>
-<span class='fu'>eval_density</span><span class='op'>(</span><span class='va'>d</span>, at <span class='op'>=</span> <span class='op'>-</span><span class='fl'>3</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval_density(d, at = -3:3): could not find function "eval_density"</span></div><div class='input'><span class='fu'>eval_pmf</span><span class='op'>(</span><span class='va'>d</span>, at <span class='op'>=</span> <span class='op'>-</span><span class='fl'>3</span><span class='op'>:</span><span class='fl'>3</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval_pmf(d, at = -3:3, strict = FALSE): could not find function "eval_pmf"</span></div><div class='input'><span class='fu'>eval_hazard</span><span class='op'>(</span><span class='va'>d</span>, at <span class='op'>=</span> <span class='op'>-</span><span class='fl'>3</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in eval_hazard(d, at = -3:3): could not find function "eval_hazard"</span></div></pre>
+<span class='fu'><a href='eval_density.html'>eval_density</a></span><span class='op'>(</span><span class='va'>d</span>, at <span class='op'>=</span> <span class='op'>-</span><span class='fl'>3</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.004431848 0.053990967 0.241970725 0.398942280 0.241970725 0.053990967
+#&gt; [7] 0.004431848</div><div class='input'><span class='fu'><a href='eval_pmf.html'>eval_pmf</a></span><span class='op'>(</span><span class='va'>d</span>, at <span class='op'>=</span> <span class='op'>-</span><span class='fl'>3</span><span class='op'>:</span><span class='fl'>3</span>, strict <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0 0 0 0 0 0 0</div><div class='input'><span class='fu'><a href='eval_hazard.html'>eval_hazard</a></span><span class='op'>(</span><span class='va'>d</span>, at <span class='op'>=</span> <span class='op'>-</span><span class='fl'>3</span><span class='op'>:</span><span class='fl'>3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 0.004437839 0.055247863 0.287599971 0.797884561 1.525135276 2.373215533
+#&gt; [7] 3.283098655</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -166,7 +168,7 @@ evaluated.</p></td>
 
       <footer>
       <div class="copyright">
-  <p>Developed by <a href='http://vincenzocoia.com'>Vincenzo Coia</a>.</p>
+  <p>Developed by <a href='http://vincenzocoia.com'>Vincenzo Coia</a>, Amogh Joshi, Shuyi Tan, Zhipeng Zhu.</p>
 </div>
 
 <div class="pkgdown">

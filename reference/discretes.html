@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Normal (Gaussian) Distribution — dst_norm • distionary</title>
+<title>Probing discrete values in a distribution — next_discrete • distionary</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,10 @@
 
 
 
-<meta property="og:title" content="Normal (Gaussian) Distribution — dst_norm" />
-<meta property="og:description" content="Makes a distribution belonging to the family of
-Normal (Gaussian) distributions." />
+<meta property="og:title" content="Probing discrete values in a distribution — next_discrete" />
+<meta property="og:description" content="next_discrete() and prev_discrete() find the n discrete values
+in a distribution next to a reference point. num_discretes() finds
+the number of discrete values within a range." />
 
 
 
@@ -109,34 +110,63 @@ Normal (Gaussian) distributions." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Normal (Gaussian) Distribution</h1>
+    <h1>Probing discrete values in a distribution</h1>
     
-    <div class="hidden name"><code>dst_norm.Rd</code></div>
+    <div class="hidden name"><code>discretes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Makes a distribution belonging to the family of
-Normal (Gaussian) distributions.</p>
+    <p><code>next_discrete()</code> and <code>prev_discrete()</code> find the <code>n</code> discrete values
+in a distribution next to a reference point. <code>num_discretes()</code> finds
+the number of discrete values within a range.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dst_norm</span><span class='op'>(</span><span class='va'>mean</span>, <span class='va'>variance</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>next_discrete</span><span class='op'>(</span><span class='va'>distribution</span>, <span class='va'>from</span>, n <span class='op'>=</span> <span class='fl'>1L</span>, include_from <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>prev_discrete</span><span class='op'>(</span><span class='va'>distribution</span>, <span class='va'>from</span>, n <span class='op'>=</span> <span class='fl'>1L</span>, include_from <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span>
+
+<span class='fu'>num_discretes</span><span class='op'>(</span><span class='va'>distribution</span>, <span class='va'>from</span>, <span class='va'>to</span>, <span class='va'>include_from</span>, <span class='va'>include_to</span><span class='op'>)</span>
+
+<span class='fu'>has_infinite_discretes</span><span class='op'>(</span><span class='va'>distribution</span>, from <span class='op'>=</span> <span class='op'>-</span><span class='cn'>Inf</span>, to <span class='op'>=</span> <span class='cn'>Inf</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>mean, variance</th>
-      <td><p>Mean and variance of the distribution.</p></td>
+      <th>distribution</th>
+      <td><p>Distribution</p></td>
+    </tr>
+    <tr>
+      <th>from</th>
+      <td><p>Reference value.</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>Number of discrete values to find.</p></td>
+    </tr>
+    <tr>
+      <th>include_from, include_to</th>
+      <td><p>Logical; should the <code>from</code> value be included
+in the query? Should the <code>to</code> value?</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>For <code>next_discrete()</code> and <code>prev_discrete()</code>, a vector of
+all available discrete points satisfying the query.
+If less values are available than asked
+via <code>n</code>, only those values are returned.
+If infinite values satisfy the query, an error is thrown;
+<code>NaN</code> occurs when no one particular discrete value follows, such as
+when asking for the integer that comes before infinity.</p>
+<p>For <code>num_discretes()</code>, a single non-negative integer, possibly infinite.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>dst_norm</span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; norm parametric dst
-#&gt; 
-#&gt;  name :
-#&gt; [1] "norm"</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>next_discrete</span><span class='op'>(</span><span class='fu'><a href='dst_pois.html'>dst_pois</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, from <span class='op'>=</span> <span class='fl'>1.3</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 2</div><div class='input'><span class='fu'>prev_discrete</span><span class='op'>(</span><span class='fu'><a href='dst_pois.html'>dst_pois</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>)</span>, from <span class='op'>=</span> <span class='fl'>3</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] 2 1 0</div><div class='input'><span class='fu'>next_discrete</span><span class='op'>(</span><span class='fu'><a href='dst_norm.html'>dst_norm</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>, from <span class='op'>=</span> <span class='fl'>1.3</span>, n <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; numeric(0)</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

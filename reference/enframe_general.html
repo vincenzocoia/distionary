@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Normal (Gaussian) Distribution — dst_norm • distionary</title>
+<title>Enframe a distributional representation's evaluation — enframe_general • distionary</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,11 @@
 
 
 
-<meta property="og:title" content="Normal (Gaussian) Distribution — dst_norm" />
-<meta property="og:description" content="Makes a distribution belonging to the family of
-Normal (Gaussian) distributions." />
+<meta property="og:title" content="Enframe a distributional representation's evaluation — enframe_general" />
+<meta property="og:description" content="This is the workhorse for the enframe_ family of functions.
+enframe_general() evaluates a specified distributional representation
+for multiple distributions, and places the results in a data frame
+or tibble." />
 
 
 
@@ -109,34 +111,80 @@ Normal (Gaussian) distributions." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Normal (Gaussian) Distribution</h1>
+    <h1>Enframe a distributional representation's evaluation</h1>
     
-    <div class="hidden name"><code>dst_norm.Rd</code></div>
+    <div class="hidden name"><code>enframe_general.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Makes a distribution belonging to the family of
-Normal (Gaussian) distributions.</p>
+    <p>This is the workhorse for the <code>enframe_</code> family of functions.
+<code>enframe_general()</code> evaluates a specified distributional representation
+for multiple distributions, and places the results in a data frame
+or tibble.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dst_norm</span><span class='op'>(</span><span class='va'>mean</span>, <span class='va'>variance</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>enframe_general</span><span class='op'>(</span><span class='va'>...</span>, <span class='va'>at</span>, <span class='va'>arg_name</span>, <span class='va'>fn_prefix</span>, <span class='va'>sep</span>, <span class='va'>eval_fn</span>, fn_args <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>mean, variance</th>
-      <td><p>Mean and variance of the distribution.</p></td>
+      <th>...</th>
+      <td><p>A distribution, or possibly multiple
+distributions in the case of <code>...</code>.</p></td>
+    </tr>
+    <tr>
+      <th>at</th>
+      <td><p>Vector of values to evaluate the cdf at. Must be named when using
+in <code>enframe_</code>.</p></td>
+    </tr>
+    <tr>
+      <th>arg_name</th>
+      <td><p>For <code>enframe_</code>, name of the column containing
+the function arguments.</p></td>
+    </tr>
+    <tr>
+      <th>fn_prefix</th>
+      <td><p>For <code>enframe_</code>, name of the function to
+appear in the column(s).</p></td>
+    </tr>
+    <tr>
+      <th>sep</th>
+      <td><p>When <code>enframe</code>'ing more than one distribution, the
+character that will be separating the <code>fn_name</code> and the distribution name.</p></td>
+    </tr>
+    <tr>
+      <th>eval_fn</th>
+      <td><p>Name of the <code>eval_</code> function for the desired distributional
+representation, such as <code>eval_cdf</code> and <code>eval_density</code>.</p></td>
+    </tr>
+    <tr>
+      <th>fn_args</th>
+      <td><p>A named list of arguments to pass to the <code>eval_fn</code> function,
+besides the distribution and <code>at</code> argument (the <code>strict</code> argument
+being the most common, and perhaps the only use case).</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>dst_norm</span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; norm parametric dst
-#&gt; 
-#&gt;  name :
-#&gt; [1] "norm"</div></pre>
+    <p>A data frame or tibble of the input argument (<code>at</code>), with the
+evaluated distributional representation for each distribution in
+<code>...</code> in its own column.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>If only one distribution is specified in <code>...</code>, then the evaluation
+column will be named that of <code>fn_prefix</code>.</p>
+<p>If more than one distribution
+is specified in <code>...</code>, the evaluation columns will be named by the
+prefix <code>fn_prefix</code> followed by the distribution names, with <code>sep</code> in between.</p>
+<p>Distributions are named first by their argument names, if given, or if not,
+the input text. Names are then made unique using <code><a href='https://vctrs.r-lib.org/reference/vec_as_names.html'>vctrs::vec_as_names()</a></code>
+with the "unique" names repair. "Unique" is chosen instead of "universal"
+because names are anticipated to be syntactic with the <code>eval_fn</code> prefix;
+"minimal" is not sufficient because it may result in columns having the
+same names.</p>
+
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
