@@ -9,7 +9,7 @@
 #' @examples
 #' d <- dst_unif(0, 4)
 #' eval_survival(d, at = 0:4)
-#' enframe_survival(d, d + 1, at = 0:4)
+#' enframe_survival(d, at = 0:4)
 #' @family distributional representations
 #' @rdname survival
 #' @export

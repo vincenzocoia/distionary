@@ -39,7 +39,7 @@ probability \code{p} is \code{p / (1 - p)}.
 \examples{
 d <- dst_pois(1)
 eval_odds(d, at = c(1, 2, 2.5))
-enframe_odds(d, d + 1, at = 0:4)
+enframe_odds(d, at = 0:4)
 }
 \seealso{
 Other distributional representations: 

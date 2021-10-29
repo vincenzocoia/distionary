@@ -18,7 +18,7 @@ prev_discrete_natural(from, n, include_from)
 \arguments{
 \item{x}{A vector of all possible discrete values.}
 
-\item{from}{Reference value.}
+\item{from}{Reference values.}
 
 \item{n}{Number of discrete values to find.}
 

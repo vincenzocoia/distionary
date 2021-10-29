@@ -9,7 +9,7 @@
 #' @examples
 #' d <- dst_unif(0, 4)
 #' eval_chf(d, at = 0:4)
-#' enframe_chf(d, d + 1, at = 0:4)
+#' enframe_chf(d, at = 0:4)
 #' @family distributional representations
 #' @rdname chf
 #' @export

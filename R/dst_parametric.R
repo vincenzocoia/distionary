@@ -87,17 +87,26 @@ eval_pmf.parametric <- function(distribution, at, strict = TRUE) {
 	stop("Evaluating non-strict pmf for a parametric distribution is ",
 		 "not yet available. Check that your distribution's variable type ",
 		 "is specified correctly, or for mixed variables, consider creating ",
-		 "separate continuous and discrete distributions and running `mix()`.")
+		 "separate continuous and discrete distributions ",
+		 "and running `distplyr::mix()`.")
 }
 
 #' @export
 eval_quantile.parametric <- function(distribution, at) {
 	function_name <- paste0("q", distribution$name)
-	rlang::exec(function_name, at, !!!distribution$parameters)
+	if (exists(function_name)) {
+	  rlang::exec(function_name, at, !!!distribution$parameters)
+	} else {
+	  NextMethod()
+	}
 }
 
 #' @export
 realise.parametric <- function(distribution, n = 1) {
 	function_name <- paste0("r", distribution$name)
-	rlang::exec(function_name, n, !!!distribution$parameters)
+	if (exists(function_name)) {
+	  rlang::exec(function_name, n, !!!distribution$parameters)
+	} else {
+	  NextMethod()
+	}
 }

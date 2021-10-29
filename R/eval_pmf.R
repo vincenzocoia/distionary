@@ -11,7 +11,7 @@
 #' @examples
 #' d <- dst_empirical(1:10)
 #' eval_pmf(d, at = c(1, 2, 2.5))
-#' enframe_pmf(d, d + 1, at = 0:4)
+#' enframe_pmf(d, at = 0:4)
 #' eval_pmf(dst_norm(0, 1), at = -3:3, strict = FALSE)
 #' @family distributional representations
 #' @rdname pmf

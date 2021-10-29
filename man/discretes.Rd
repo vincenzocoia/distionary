@@ -18,7 +18,7 @@ has_infinite_discretes(distribution, from = -Inf, to = Inf)
 \arguments{
 \item{distribution}{Distribution}
 
-\item{from}{Reference value.}
+\item{from, to}{Reference values.}
 
 \item{n}{Number of discrete values to find.}
 

@@ -10,7 +10,7 @@
 #' @examples
 #' d <- dst_unif(0, 4)
 #' eval_density(d, at = 0:4)
-#' enframe_density(d, d + 1, at = 0:4)
+#' enframe_density(d, at = 0:4)
 #' eval_density(dst_pois(1), at = 0:4, strict = FALSE)
 #' @family distributional representations
 #' @rdname density

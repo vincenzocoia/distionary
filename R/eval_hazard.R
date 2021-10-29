@@ -9,8 +9,6 @@
 #' d <- dst_unif(0, 4)
 #' eval_hazard(d, at = 0:4)
 #' enframe_hazard(d, at = 0:4)
-#' hazard <- get_hazard(d)
-#' hazard(0:4)
 #' @family distributional representations
 #' @rdname hazard
 #' @export
