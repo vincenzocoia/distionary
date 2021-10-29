@@ -1,0 +1,50 @@
+#' @export
+mean.finite <- function(x, ...) {
+	with(x$probabilities, {
+		sum(size * location)
+	})
+}
+
+#' @export
+evi.finite <- function(distribution) {
+	NaN
+}
+
+#' @export
+variance.finite <- function(distribution) {
+  mu <- mean(distribution)
+	with(distribution$probabilities, {
+		mu2 <- sum(size * location^2)
+		mu2 - mu^2
+	})
+}
+
+#' @export
+skewness.finite <- function(distribution) {
+	mu <- mean(distribution)
+	sigma <- stdev(distribution)
+	with(distribution$probabilities, {
+		trans <- ((location - mu) / sigma)^3
+		sum(trans * size)
+	})
+}
+
+#' @export
+kurtosis_exc.finite <- function(distribution) {
+	mu <- mean(distribution)
+	sigma <- stdev(distribution)
+	with(distribution$probabilities, {
+		trans <- ((location - mu) / sigma)^4
+		sum(trans * size) - 3
+	})
+}
+
+#' @rdname range
+#' @export
+range.finite <- function(..., na.rm = FALSE) {
+  distribution <- rlang::list2(...)[[1L]]
+	unlisted_probability_list <- distribution$probabilities$location
+	min_val <- min(unlisted_probability_list)
+	max_val <- max(unlisted_probability_list)
+	c(min_val, max_val)
+}

@@ -1,8 +1,13 @@
 Package: distionary
 Title: Create and Evaluate Univariate Probability Distributions
 Version: 0.0.0.9000
-Authors@R: 
-    person("Vincenzo", "Coia", , "vincenzo.coia@gmail.com", role = c("aut", "cre"))
+Authors@R: c(
+    person("Vincenzo", "Coia", , "vincenzo.coia@gmail.com", 
+           role = c("aut", "cre")),
+    person("Amogh", "Joshi", role = "aut"),
+    person("Shuyi", "Tan", role = "aut"),
+    person("Zhipeng", "Zhu", role = "aut")
+    )
 Description: Make univariate probability distribution objects 
     (of class "dst"). Evaluate their properties, such as density,
     cdf, mass, mean, variance, etc., and generate random
@@ -10,12 +15,14 @@ Description: Make univariate probability distribution objects
 License: MIT + file LICENSE
 Suggests: 
     covr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tibble
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports: 
+    ellipsis,
     rlang,
     vctrs
