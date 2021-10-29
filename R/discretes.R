@@ -5,7 +5,7 @@
 #' the number of discrete values within a range.
 #'
 #' @param distribution Distribution
-#' @param from Reference value.
+#' @param from,to Reference values.
 #' @param n Number of discrete values to find.
 #' @param include_from,include_to Logical; should the `from` value be included
 #' in the query? Should the `to` value?
@@ -24,13 +24,13 @@
 #' next_discrete(dst_norm(0, 1), from = 1.3, n = 4)
 #' @rdname discretes
 #' @export
-next_discrete <- function(distribution, from, n = 1L, include_from = FALSE, ...) {
+next_discrete <- function(distribution, from, n = 1L, include_from = FALSE) {
   UseMethod("next_discrete")
 }
 
 #' @rdname discretes
 #' @export
-prev_discrete <- function(distribution, from, n = 1L, include_from = FALSE, ...) {
+prev_discrete <- function(distribution, from, n = 1L, include_from = FALSE) {
   UseMethod("prev_discrete")
 }
 
@@ -58,7 +58,7 @@ has_infinite_discretes.dst <- function(distribution, from = -Inf, to = Inf) {
 #' @export
 #' @inheritParams next_discrete
 next_discrete.dst <- function(distribution, from, n = 1L,
-                              include_from = FALSE, ...) {
+                              include_from = FALSE) {
   if (variable(distribution) == "continuous") {
     return(numeric(0L))
   }
@@ -68,7 +68,7 @@ next_discrete.dst <- function(distribution, from, n = 1L,
 #' @export
 #' @inheritParams next_discrete
 prev_discrete.dst <- function(distribution, from, n = 1L,
-                              include_from = FALSE, ...) {
+                              include_from = FALSE) {
   if (variable(distribution) == "continuous") {
     return(numeric(0L))
   }

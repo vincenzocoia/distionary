@@ -7,9 +7,9 @@
 \alias{has_infinite_discretes}
 \title{Probing discrete values in a distribution}
 \usage{
-next_discrete(distribution, from, n = 1L, include_from = FALSE, ...)
+next_discrete(distribution, from, n = 1L, include_from = FALSE)
 
-prev_discrete(distribution, from, n = 1L, include_from = FALSE, ...)
+prev_discrete(distribution, from, n = 1L, include_from = FALSE)
 
 num_discretes(distribution, from, to, include_from, include_to)
 

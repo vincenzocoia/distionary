@@ -3,21 +3,20 @@ w <- c(2, 2, 0, 2, 10, 1, NA, -1, 1)
 dat <- data.frame(y = y, w = w)
 
 edist <- dst_empirical(y, data = dat)
-cdf <- get_cdf(edist)
-qf <- get_quantile(edist)
-sf <- get_survival(edist)
-# plot(cdf)
-# plot(qf)
+cdf <- representation_as_function(edist, "cdf")
+qf <- representation_as_function(edist, "quantile")
+sf <- representation_as_function(edist, "survival")
 
 set.seed(5)
 edist2 <- dst_empirical(rnorm(10))
 
 test_that("unweighted empirical distribution works", {
+  cdf2 <- representation_as_function(edist2, "cdf")
   expect_true(is_empirical(edist))
   expect_true(is_empirical(edist2))
   expect_true(is_distribution(edist))
   expect_true(is_distribution(edist2))
-  expect_equal(plateaus(get_cdf(edist2)), 0:10 / 10)
+  expect_equal(plateaus(cdf2), 0:10 / 10)
   expect_identical(stats::knots(cdf), plateaus(qf))
   expect_equal(plateaus(cdf), 1 - plateaus(sf))
   expect_identical(cdf(qf(1 / 8)), 1 / 8)
@@ -29,7 +28,8 @@ test_that("unweighted empirical distribution works", {
   expect_identical(qf(cdf(2 - 0.001)), -3)
   expect_identical(qf(0:1), c(-3, 9))
   set.seed(1)
-  s1 <- sample(sort(unique(y)), size = 100, replace = TRUE, prob = c(1, 3, 1, 1, 1, 1))
+  s1 <- sample(sort(unique(y)), size = 100, replace = TRUE,
+               prob = c(1, 3, 1, 1, 1, 1))
   set.seed(1)
   s2 <- realise(edist, 100)
   expect_identical(s1, s2)
@@ -41,9 +41,9 @@ test_that("unweighted empirical distribution works", {
 # wdist <- dst_empirical(y, data = dat, weights = w) # Error
 dat <- dat[-8, ]
 wdist <- dst_empirical(y, data = dat, weights = w)
-cdf <- get_cdf(wdist)
-qf <- get_quantile(wdist)
-sf <- get_survival(wdist)
+cdf <- representation_as_function(wdist, "cdf")
+qf <- representation_as_function(wdist, "quantile")
+sf <- representation_as_function(wdist, "survival")
 # plot(cdf)
 # plot(qf)
 
@@ -57,11 +57,11 @@ test_that("weighted step function works", {
 
 test_that("step points are correct", {
   expect_identical(
-    plateaus(get_cdf(wdist)),
-    c(0, cumsum(discontinuities(wdist)[["size"]]))
+    plateaus(cdf),
+    c(0, cumsum(wdist$probabilities$size))
   )
   expect_identical(
-    stats::knots(get_cdf(wdist)),
-    discontinuities(wdist)[["location"]]
+    stats::knots(cdf),
+    wdist$probabilities$location
   )
 })

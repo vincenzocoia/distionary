@@ -16,10 +16,11 @@
 #' or tibble form (for `enframe_`).
 #' @family distributional representations
 #' @examples
-#' d <- dst_unif(0, 4)
-#' eval_cdf(d, at = 0:4)
-#' enframe_cdf(d, at = 0:4)
-#' enframe_cdf(d, d + 1, at = 0:4)
+#' d1 <- dst_unif(0, 4)
+#' d2 <- dst_pois(1.1)
+#' eval_cdf(d1, at = 0:4)
+#' enframe_cdf(d1, at = 0:4)
+#' enframe_cdf(d1, d2, at = 0:4)
 #' @rdname cdf
 #' @export
 eval_cdf <- function(distribution, at) UseMethod("eval_cdf")

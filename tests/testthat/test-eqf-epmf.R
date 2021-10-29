@@ -24,18 +24,18 @@ test_that("eqf provides inverse of ecdf at original values", {
 })
 
 test_that("eqf = stats::quantile() with type = 1", {
-  expect_equivalent(
+  expect_equal(
     qf(0:10 / 10),
-    stats::quantile(x, probs = 0:10 / 10, type = 1)
+    unname(stats::quantile(x, probs = 0:10 / 10, type = 1))
   )
   eps <- 0.000001
-  expect_equivalent(
+  expect_equal(
     qf(1:10 / 10 - eps),
-    stats::quantile(x, probs = 1:10 / 10 - eps, type = 1)
+    unname(stats::quantile(x, probs = 1:10 / 10 - eps, type = 1))
   )
-  expect_equivalent(
+  expect_equal(
     qf(0:9 / 10 + eps),
-    stats::quantile(x, probs = 0:9 / 10 + eps, type = 1)
+    unname(stats::quantile(x, probs = 0:9 / 10 + eps, type = 1))
   )
 })
 
