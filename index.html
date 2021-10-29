@@ -87,25 +87,57 @@
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">distionary</span><span class="op">)</span></code></pre></div>
 <p>We can make distributions from standard families, like beta and Poisson:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># (d_beta &lt;- dst_beta(2, 4))</span>
-<span class="co"># (d_pois &lt;- dst_pois(1.2))</span></code></pre></div>
+<code class="sourceCode R"><span class="op">(</span><span class="va">d_beta</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dst_beta.html">dst_beta</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; beta parametric dst</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  name :</span>
+<span class="co">#&gt; [1] "beta"</span>
+<span class="op">(</span><span class="va">d_pois</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dst_pois.html">dst_pois</a></span><span class="op">(</span><span class="fl">1.2</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; pois parametric dst</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  name :</span>
+<span class="co">#&gt; [1] "pois"</span></code></pre></div>
 <p>You can also make your own family of distributions (see the vignette).</p>
 <p>We can also make empirical distributions from data:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># x &lt;- c(4.1, 2.3, 3.4, 5.5, 1.0, 6.8)</span>
-<span class="co"># (d_emp &lt;- dst_empirical(x))</span></code></pre></div>
+<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">4.1</span>, <span class="fl">2.3</span>, <span class="fl">3.4</span>, <span class="fl">5.5</span>, <span class="fl">1.0</span>, <span class="fl">6.8</span><span class="op">)</span>
+<span class="op">(</span><span class="va">d_emp</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/dst_empirical.html">dst_empirical</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; finite dst</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  probabilities :</span>
+<span class="co">#&gt; # A tibble: 6 × 2</span>
+<span class="co">#&gt;   location  size</span>
+<span class="co">#&gt;      &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1      1   0.167</span>
+<span class="co">#&gt; 2      2.3 0.167</span>
+<span class="co">#&gt; 3      3.4 0.167</span>
+<span class="co">#&gt; 4      4.1 0.167</span>
+<span class="co">#&gt; 5      5.5 0.167</span>
+<span class="co">#&gt; 6      6.8 0.167</span></code></pre></div>
 <p>We can evaluate different distributional forms, such as the density or pmf:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># eval_density(d_beta, at = c(0.1, 0.2))</span>
-<span class="co"># eval_pmf(d_pois, at = c(1, 1.5, 3))</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/eval_density.html">eval_density</a></span><span class="op">(</span><span class="va">d_beta</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.2</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1.458 2.048</span>
+<span class="fu"><a href="reference/eval_pmf.html">eval_pmf</a></span><span class="op">(</span><span class="va">d_pois</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1.5</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.36143305 0.00000000 0.08674393</span></code></pre></div>
 <p>Or, we can enframe the results in a tibble:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># enframe_cdf(d_beta, d_pois, d_emp, at = c(0.1, 0.6, 1.5, 3))</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="reference/eval_cdf.html">enframe_cdf</a></span><span class="op">(</span><span class="va">d_beta</span>, <span class="va">d_pois</span>, <span class="va">d_emp</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.6</span>, <span class="fl">1.5</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 4 × 4</span>
+<span class="co">#&gt;    .arg cdf_d_beta cdf_d_pois cdf_d_emp</span>
+<span class="co">#&gt;   &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1   0.1     0.0815      0.301     0    </span>
+<span class="co">#&gt; 2   0.6     0.913       0.301     0    </span>
+<span class="co">#&gt; 3   1.5     1           0.663     0.167</span>
+<span class="co">#&gt; 4   3       1           0.966     0.333</span></code></pre></div>
 <p>Evaluate properties of the distributions:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># mean(d_beta)</span>
-<span class="co"># skewness(d_pois)</span>
-<span class="co"># range(d_emp)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">d_beta</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.3333333</span>
+<span class="fu"><a href="reference/kurtosis_raw.html">skewness</a></span><span class="op">(</span><span class="va">d_pois</span><span class="op">)</span>
+<span class="co">#&gt; [1] 0.9128709</span>
+<span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">d_emp</span><span class="op">)</span>
+<span class="co">#&gt; [1] 1.0 6.8</span></code></pre></div>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
