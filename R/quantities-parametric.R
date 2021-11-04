@@ -41,7 +41,8 @@ range.parametric <- function(..., na.rm = FALSE) {
 
 #' @export
 median.parametric <- function(x, ...) {
-	quantity_parametric(distribution, "median")
+  ellipsis::check_dots_empty()
+	quantity_parametric(x, "median")
 }
 
 #' Grab a quantity from the database

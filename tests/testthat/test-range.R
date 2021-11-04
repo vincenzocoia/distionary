@@ -16,9 +16,9 @@ test_that("range for uniform dst works", {
 
 test_that("range for gpd dst works", {
   expect_equal(range(dst_gpd(0, 1, 46)), c(0, Inf))
-  expect_equal(range(dst_gpd(-165465, 654654645, 1)), c(-165465, Inf))
-  expect_equal(range(dst_gpd(0.2, 3, 1098098)), c(0.2, Inf))
-  expect_equal(range(dst_gpd(-2.26, 3, 4)), c(-2.26, Inf))
+  expect_equal(range(dst_gpd(-0.2, 1, 1)), c(-0.2, Inf))
+  expect_equal(range(dst_gpd(0.2, 1, 0.6)), c(0.2, Inf))
+  expect_equal(range(dst_gpd(-2.26, 3, 0.26)), c(-2.26, Inf))
   expect_equal(range(dst_gpd(0, 1, -46)), c(0, 1 / 46))
   expect_equal(range(dst_gpd(-2, 45.21, -35.23)), c(-2, -0.71671871))
   expect_equal(range(dst_gpd(0.265, 8, -4.54)), c(0.265, 2.02711453744))
