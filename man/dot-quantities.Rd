@@ -5,7 +5,7 @@
 \alias{.quantities}
 \title{Specific Formulas for Quantities}
 \format{
-An object of class \code{list} of length 6.
+An object of class \code{list} of length 15.
 }
 \usage{
 .quantities

@@ -68,7 +68,8 @@
   norm = rlang::exprs(
     mean = mean,
     median = mean,
-    variance = variance,
+    variance = sd ^ 2,
+    stdev = sd,
     skewness = 0,
     kurtosis_exc = 0,
     range = c(-Inf, Inf),
