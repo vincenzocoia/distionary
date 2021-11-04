@@ -1,0 +1,20 @@
+#' Cauchy Distribution
+#'
+#' Makes a distribution belonging to the family of
+#' cauchy distributions.
+#'
+#' @param location
+#' @param scale > 0
+#'
+#' @example dst_cauchy(0, 1)
+#'
+#'@export
+dst_cauchy <- function(location, scale){
+  if (scale <= 0){
+    stop('Scale must be positive')
+  }
+  dst_parametric("cauchy",
+                 location = location,
+                 scale = scale,
+                 .variable = "continuous")
+}
