@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Moments of a Distribution — kurtosis_raw • distionary</title>
+<title>Grab a quantity from the database — quantity_parametric • distionary</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,12 @@
 
 
 
-<meta property="og:title" content="Moments of a Distribution — kurtosis_raw" />
-<meta property="og:description" content="Get common moment-related quantities of a
-distribution: mean, variance, standard deviation (sd),
-skewness, and kurtosis." />
+<meta property="og:title" content="Grab a quantity from the database — quantity_parametric" />
+<meta property="og:description" content="For a parametric distribution, evaluates a quantity
+(such as mean, median, range, ...) if the distribution has
+an entry in the .quantities database. For distributions without
+the &quot;parametric&quot; (sub-) class, quantity evaluation is delegated
+to the next higher level class." />
 
 
 
@@ -110,77 +112,38 @@ skewness, and kurtosis." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Moments of a Distribution</h1>
+    <h1>Grab a quantity from the database</h1>
     
-    <div class="hidden name"><code>moments.Rd</code></div>
+    <div class="hidden name"><code>quantity_parametric.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Get common moment-related quantities of a
-distribution: mean, variance, standard deviation (sd),
-skewness, and kurtosis.</p>
+    <p>For a parametric distribution, evaluates a quantity
+(such as mean, median, range, ...) if the distribution has
+an entry in the <code>.quantities</code> database. For distributions without
+the "parametric" (sub-) class, quantity evaluation is delegated
+to the next higher level class.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>kurtosis_raw</span><span class='op'>(</span><span class='va'>distribution</span><span class='op'>)</span>
-
-<span class='fu'>kurtosis_exc</span><span class='op'>(</span><span class='va'>distribution</span><span class='op'>)</span>
-
-<span class='co'># S3 method for dst</span>
-<span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='co'># S3 method for dst</span>
-<span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
-
-<span class='fu'>skewness</span><span class='op'>(</span><span class='va'>distribution</span><span class='op'>)</span>
-
-<span class='fu'>stdev</span><span class='op'>(</span><span class='va'>distribution</span><span class='op'>)</span>
-
-<span class='co'># S3 method for dst</span>
-<span class='fu'>stdev</span><span class='op'>(</span><span class='va'>distribution</span><span class='op'>)</span>
-
-<span class='fu'>variance</span><span class='op'>(</span><span class='va'>distribution</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>quantity_parametric</span><span class='op'>(</span><span class='va'>distribution</span>, <span class='va'>quantity</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>distribution</th>
-      <td><p>Distribution to compute skewness from.</p></td>
+      <td><p>A distribution.</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p>Distribution to calculate median from.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Not used.</p></td>
+      <th>quantity</th>
+      <td><p>Character; name of the quantity to extract.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A single numeric.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>The desired quantity, evaluated.</p>
 
-    <p>If there is no method associated with a subclass of
-<code>x</code>, then moments are calculated using
-<code><a href='https://rdrr.io/r/stats/integrate.html'>stats::integrate()</a></code> from the quantile function.</p>
-<p>Median is calculated as the 0.5-quantile. So, when the median is
-non-unique, we take the smallest of the possibilities.</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dst_gpd.html'>dst_gpd</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0.5</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dst_unif.html'>dst_unif</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span></span>
-<span class='r-in'><span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dst_norm.html'>dst_norm</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>4</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 2</span>
-<span class='r-in'><span class='fu'>variance</span><span class='op'>(</span><span class='va'>b</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0.08333333</span>
-<span class='r-in'><span class='fu'>kurtosis_raw</span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 3</span>
-<span class='r-in'><span class='fu'>kurtosis_exc</span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0</span>
-</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
