@@ -3,7 +3,7 @@ test_that("dst_pois basic functions work", {
   .dst <- dst_pois(lambda = lambda)
   expect_identical(mean(.dst), lambda)
   expect_identical(variance(.dst), lambda)
-  expect_identical(distplyr::stdev(.dst), sqrt(lambda))
+  expect_identical(stdev(.dst), sqrt(lambda))
   expect_identical(skewness(.dst), lambda^(-0.5))
   expect_identical(kurtosis_exc(.dst), lambda^(-1))
   expect_identical(range(.dst), c(0, Inf))

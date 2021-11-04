@@ -6,7 +6,7 @@
 #' @details A list, where each distribution gets a (named) entry, with name
 #' given by the suffix of `dst_` (such as "norm", "unif", etc.). Each
 #' distribution's entry is itself a named list of expressions, where the
-#' name is the name of the quantity matching the distplyr function name:
+#' name is the name of the quantity matching the distionary function name:
 #'
 #' - mean
 #' - median
