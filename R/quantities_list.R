@@ -102,15 +102,34 @@
     range = c(0, 1)
   ),
   binom = rlang::exprs(
-    mean = n * p,
-    variance = n * p * q,
-    skewness = (q - p)/sqrt( n * p * q),
-    kurtosis_exc = (1 - 6 * p * q)/(n * p * q),
-    range = c(0, n)
+    mean = size * p,
+    variance = size * p * (1-p),
+    skewness = ((1-p) - p)/sqrt( size * p * (1-p)),
+    kurtosis_exc = (1 - 6 * p * (1-p))/(size * p * (1-p)),
+    range = c(0, size)
   ),
+  bern = rlang::exprs(
+    mean = p,
+    median = ifelse(p < 1/2, 0, ifelse(p == 1/2, 0, 1)), # when p = 1/2, the median is ambigious in [0, 1], R returns 0
+    variance = p * (1-p),
+    skewness = ((1 - p) - p)/sqrt(p * (1-p)),
+    kurtosis_exc = (1 - 6*p*(1-p))/(p * (1-p)),
+    range = c(0, 1)
+  ),
+
+  nbinom = rlang::exprs(
+    mean = prob * size / (1 - prob),
+    #median = FILL_THIS_IN,
+    variance = prob * size/((1- prob)^2),
+    skewness = (1 + prob)/sqrt(prob * size),
+    kurtosis_exc = 6/size + ((1-prob)^2)/(prob*size),
+    range = c(0, 1), # need to double check
+    #evi = FILL_THIS_IN not sure
+  ),
+
   geom = rlang::exprs(
     mean = 1/p,
-    median = ifelse((-1)/log2(1 - p)%%1 != 0, (-1)/log2(1 - p), 'No unique integer'), # not sure
+    #median = ifelse((-1)/log2(1 - p)%%1 != 0, (-1)/log2(1 - p), 'No unique integer'), # not sure
     variance = (1 - p)/p^2,
     skewness = (2 - p)/sqrt(1 - p),
     kurtosis_exc = 6 + p^2/(1 - p),
@@ -143,24 +162,24 @@
     range = c(0, Inf)
     #evi = FILL_THIS_IN
   ),
-  laplace = rlang::exprs( # the location parameter a, the scale parameter b
-    mean = a,
-    median = a,
-    variance = 2*(b^2),
-    skewness = 0,
-    kurtosis_exc = 3,
-    range = c(0, 1)
-    #evi = FILL_THIS_IN
-  ),
-  fatigue = rlang::exprs(
-    mean = beta * (1 + (alpha^2) /2 ),
-    median = beta,
-    variance = (alpha * beta)^2 * (1 + (5*(alpha^2))/4),
-    skewness = (4 * alpha * (11*(alpha^2) + 6))/((5 * (alpha^2) + 4)^(3/2)),
-    kurtosis_exc = 3 + (6*(alpha^2)(93*(alpha^2) + 40))/(5*(alpha^2) + 4)^2,
-    range = c(0, Inf)
-    #evi = FILL_THIS_IN
-  ),
+  # laplace = rlang::exprs( # the location parameter a, the scale parameter b
+  #   mean = a,
+  #   median = a,
+  #   variance = 2*(b^2),
+  #   skewness = 0,
+  #   kurtosis_exc = 3,
+  #   range = c(0, 1)
+  #   #evi = FILL_THIS_IN
+  # ),
+  # fatigue = rlang::exprs(
+  #   mean = beta * (1 + (alpha^2) /2 ),
+  #   median = beta,
+  #   variance = (alpha * beta)^2 * (1 + (5*(alpha^2))/4),
+  #   skewness = (4 * alpha * (11*(alpha^2) + 6))/((5 * (alpha^2) + 4)^(3/2)),
+  #   kurtosis_exc = 3 + (6*(alpha^2)(93*(alpha^2) + 40))/(5*(alpha^2) + 4)^2,
+  #   range = c(0, Inf)
+  #   #evi = FILL_THIS_IN
+  # ),
   chisq = rlang::exprs(
       mean = k,
       median = k*((1 - 2/9*k)^3),
@@ -177,18 +196,66 @@
       kurtosis_exc = NaN,
       evi = 1,
       range = c(-Inf, Inf)
-  )
+  ),
+  hyper = rlang::exprs(
+       mean = n * K / N,
+       #median = FILL_THIS_IN,
+       variance = n* K/N * (N-K)/N * (N-n)/(N-1),
+       skewness = (N - 2*K)((N-1)^(1/2))(N - 2*n)/
+                    (((n*K*(N-K)(N - n))^(1/2))(N - 2)),
+       kurtosis_exc = 1/(n*K*(N - K)*(N-n)*(N-2)*(N-3)) *
+                        ((N-1)*(N^2) *(N*(N+1)-6*K(N-K) - 6*n*(N-n)) +
+                           6*n*K*(N-K)*(N-n)*(5*N-6)),
+       range = c(0, 1)
+       #evi = FILL_THIS_IN
+  ),
+  t = rlang::exprs(
+       mean = ifelse(df > 1, 0, NaN),
+       median = 0,
+       variance = ifelse(df > 2, df/(df-2), ifelse((df > 1 & df <= 2), Inf, NaN)),
+       skewness = ifelse(df > 3, 0, NaN),
+       kurtosis_exc = ifelse(df > 4, 6/(df - 4), ifelse((df > 2 & df <= 4), Inf, NaN)),
+       range = c(0, 1),
+       evi = 0 # not sure
+  ),
+  f = rlang::exprs(
+    mean = ifelse(df2 > 4, df2 / (df2 - 2), NaN),
+    #median = FILL_THIS_IN,
+    variance = ifelse(df2 > 4, (2*(df2^2)(df1 + df2 -2))/(df1*((df2-2)^2)(df2-4)), NaN),
+    skewness = ifelse(df2 > 6, ((2*df1 + df2 -2)*sqrt(8*(df2-4)))/
+                        ((df2-6)*sqrt(df1 * (df1+df2-2))), NaN),
+    kurtosis_exc = ifelse(df2 > 8, 12*(df1*(5*df2 - 22)*(df1+df2-2) + (df2-4)*((df2-2)^2)/
+                            (df1*(df2-6)*(df2-8)(df1+df2-2))), NaN),
+    range = c(0, 1),
+    #evi = FILL_THIS_IN # not sure
+  ),
+  gev = rlang::exprs(
+    mean = ifelse(shape >=1, Inf,
+                  ifelse(shape == 0, location - scale * digamma(1),
+                         location + (scale*(gamma(1-shape) -1))/shape)),
+    median = ifelse(shape != 0, location + scale*(log10(2)^(-shape)-1)/shape, location - scale*log10(log10(2))),
+    variance = ifelse(shape >= 1/2, Inf,
+                      ifelse(shape == 0, (scale^2)*(pi^2)/6,
+                             (scale^2)*(gamma(1-2*shape)-(gamma(1-shape))^2)/shape^2)),
+    skewness = ifelse(shape == 0, 12*sqrt(6)*zeta(3)/(pi^3),
+                      ifelse(shape < 1/3,
+                             sign(shape)*(gamma(1-3*shape)-3*(gamma(1-2*shape))*(gamma(1-shape))+2*gamma(1-shape)^3)/((gamma(1-2*shape)-gamma(1-shape)^2)^(3/2)), NaN)),
+    kurtosis_exc = ifelse(shape == 0, 12/5,
+                          ifelse(shape < 1/4,
+                                 (gamma(1-4*shape)-4*gamma(1-4*shape)*gamma(1-shape) - 3*gamma(1-2*shape)^2 + 12*gamma(1-2*shape)*(gamma(1-shape)^2) - 6*gamma(1-shape)^4)/(gamma(1-2*shape)-gamma(1-shape)^2)^2, NaN)),
+    range = c(0, 1) # need to double check
+    #evi = FILL_THIS_IN not sure
 )
 
 
 
 
-  # rlang::exprs(
-  #   mean = FILL_THIS_IN,
-  #   median = FILL_THIS_IN,
-  #   variance = FILL_THIS_IN,
-  #   skewness = FILL_THIS_IN,
-  #   kurtosis_exc = FILL_THIS_IN,
-  #   range = c(FILL_THIS_IN, FILL_THIS_IN),
-  #   evi = FILL_THIS_IN
-  # )
+# rlang::exprs(
+#   mean = FILL_THIS_IN,
+#   median = FILL_THIS_IN,
+#   variance = FILL_THIS_IN,
+#   skewness = FILL_THIS_IN,
+#   kurtosis_exc = FILL_THIS_IN,
+#   range = c(FILL_THIS_IN, FILL_THIS_IN),
+#   evi = FILL_THIS_IN
+)

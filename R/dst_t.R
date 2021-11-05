@@ -1,0 +1,18 @@
+#' The Student t Distribution
+#'
+#' Makes a distribution belonging to the family of
+#' t distributions.
+#'
+#'@param df >0 degrees of freedom
+#'
+#'@example dst_t(3)
+#'
+#'@export
+dst_t <- function(df){
+  if(t <= 0){
+    stop('t must be positive')
+  }
+  dst_parametric("t",
+                 df = df,
+                 .variable = "continuous")
+}
