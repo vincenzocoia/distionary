@@ -101,11 +101,11 @@
     range = c(0, 1)
   ),
   binom = rlang::exprs(
-    mean = n * p,
-    variance = n * p * q,
-    skewness = (q - p)/sqrt( n * p * q),
-    kurtosis_exc = (1 - 6 * p * q)/(n * p * q),
-    range = c(0, n)
+    mean = size * p,
+    variance = size * p * (1-p),
+    skewness = ((1-p) - p)/sqrt( size * p * (1-p)),
+    kurtosis_exc = (1 - 6 * p * (1-p))/(size * p * (1-p)),
+    range = c(0, size)
   ),
   bern = rlang::exprs(
     mean = p,
@@ -209,11 +209,11 @@
        #evi = FILL_THIS_IN
   ),
   t = rlang::exprs(
-       mean = ifelse(nu > 1, 0, NaN),
+       mean = ifelse(df > 1, 0, NaN),
        median = 0,
-       variance = ifelse(nu > 2, nu/(nu-2), ifelse((nu > 1 & nu <= 2), Inf, NaN)),
-       skewness = ifelse(nu > 3, 0, NaN),
-       kurtosis_exc = ifelse(nu > 4, 6/(nu - 4), ifelse((nu > 2 & nu <= 4), Inf, NaN)),
+       variance = ifelse(df > 2, df/(df-2), ifelse((df > 1 & df <= 2), Inf, NaN)),
+       skewness = ifelse(df > 3, 0, NaN),
+       kurtosis_exc = ifelse(df > 4, 6/(df - 4), ifelse((df > 2 & df <= 4), Inf, NaN)),
        range = c(0, 1),
        evi = 0 # not sure
   ),
@@ -243,7 +243,7 @@
                           ifelse(shape < 1/4,
                                  (gamma(1-4*shape)-4*gamma(1-4*shape)*gamma(1-shape) - 3*gamma(1-2*shape)^2 + 12*gamma(1-2*shape)*(gamma(1-shape)^2) - 6*gamma(1-shape)^4)/(gamma(1-2*shape)-gamma(1-shape)^2)^2, NaN)),
     range = c(0, 1) # need to double check
-    #evi = FILL_THIS_IN not ure
+    #evi = FILL_THIS_IN not sure
 )
 
 
