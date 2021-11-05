@@ -3,11 +3,11 @@
 #' Makes a distribution belonging to the family of
 #' F distributions.
 #'
-#' @param df1 > 0 degree of freedom
-#' @param df2 > 0 degree of freedom
+#' @param df1 degree of freedom, positive.
+#' @param df2 degree of freedom, positive.
 #'
-#' @example dst_f(2, 3)
-#'
+#' @examples
+#' dst_f(2, 3)
 #' @export
 dst_f <- function(df1, df2){
   if(df1 <= 0){

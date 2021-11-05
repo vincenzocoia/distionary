@@ -108,15 +108,6 @@
     kurtosis_exc = (1 - 6 * p * (1-p))/(size * p * (1-p)),
     range = c(0, size)
   ),
-  bern = rlang::exprs(
-    mean = p,
-    median = ifelse(p < 1/2, 0, ifelse(p == 1/2, 0, 1)), # when p = 1/2, the median is ambigious in [0, 1], R returns 0
-    variance = p * (1-p),
-    skewness = ((1 - p) - p)/sqrt(p * (1-p)),
-    kurtosis_exc = (1 - 6*p*(1-p))/(p * (1-p)),
-    range = c(0, 1)
-  ),
-
   nbinom = rlang::exprs(
     mean = prob * size / (1 - prob),
     #median = FILL_THIS_IN,
@@ -126,7 +117,6 @@
     range = c(0, 1), # need to double check
     #evi = FILL_THIS_IN not sure
   ),
-
   geom = rlang::exprs(
     mean = 1/p,
     #median = ifelse((-1)/log2(1 - p)%%1 != 0, (-1)/log2(1 - p), 'No unique integer'), # not sure
@@ -137,9 +127,9 @@
     #evi = FILL_THIS_IN not sure
   ),
   exp = rlang::exprs(
-    mean = 1/lambda,
-    median = log10(2)/lambda,
-    variance = 1/lambda^2,
+    mean = 1/rate,
+    median = log(2)/rate,
+    variance = 1/rate^2,
     skewness = 2,
     kurtosis_exc = 6,
     range = c(0, Inf),
@@ -162,24 +152,6 @@
     range = c(0, Inf)
     #evi = FILL_THIS_IN
   ),
-  # laplace = rlang::exprs( # the location parameter a, the scale parameter b
-  #   mean = a,
-  #   median = a,
-  #   variance = 2*(b^2),
-  #   skewness = 0,
-  #   kurtosis_exc = 3,
-  #   range = c(0, 1)
-  #   #evi = FILL_THIS_IN
-  # ),
-  # fatigue = rlang::exprs(
-  #   mean = beta * (1 + (alpha^2) /2 ),
-  #   median = beta,
-  #   variance = (alpha * beta)^2 * (1 + (5*(alpha^2))/4),
-  #   skewness = (4 * alpha * (11*(alpha^2) + 6))/((5 * (alpha^2) + 4)^(3/2)),
-  #   kurtosis_exc = 3 + (6*(alpha^2)(93*(alpha^2) + 40))/(5*(alpha^2) + 4)^2,
-  #   range = c(0, Inf)
-  #   #evi = FILL_THIS_IN
-  # ),
   chisq = rlang::exprs(
       mean = k,
       median = k*((1 - 2/9*k)^3),
@@ -243,9 +215,17 @@
     kurtosis_exc = ifelse(shape == 0, 12/5,
                           ifelse(shape < 1/4,
                                  (gamma(1-4*shape)-4*gamma(1-4*shape)*gamma(1-shape) - 3*gamma(1-2*shape)^2 + 12*gamma(1-2*shape)*(gamma(1-shape)^2) - 6*gamma(1-shape)^4)/(gamma(1-2*shape)-gamma(1-shape)^2)^2, NaN)),
-    range = c(0, 1) # need to double check
-    #evi = FILL_THIS_IN not sure
-)
+    range = {
+      if (shape > 0) {
+        c(location - scale / shape, Inf)
+      } else if (shape == 0) {
+        c(-Inf, Inf)
+      } else if (shape < 0) {
+        c(-Inf, location - scale / shape)
+      }
+    },
+    evi = shape
+  )
 
 
 

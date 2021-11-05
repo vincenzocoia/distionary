@@ -3,10 +3,11 @@
 #' Makes a distribution belonging to the family of
 #' cauchy distributions.
 #'
-#' @param location
+#' @param location Location parameter
 #' @param scale > 0
 #'
-#' @example dst_cauchy(0, 1)
+#' @examples
+#' dst_cauchy(0, 1)
 #'
 #'@export
 dst_cauchy <- function(location, scale){

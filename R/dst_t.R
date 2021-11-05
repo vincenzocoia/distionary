@@ -9,10 +9,8 @@
 #'
 #'@export
 dst_t <- function(df){
-  if(t <= 0){
-    stop('t must be positive')
+  if(df <= 0){
+    stop('df must be positive')
   }
-  dst_parametric("t",
-                 df = df,
-                 .variable = "continuous")
+  dst_parametric("t", df = df, .variable = "continuous")
 }
