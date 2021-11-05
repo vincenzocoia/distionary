@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Specific Formulas for Quantities — .quantities • distionary</title>
+<title>Hypergeometric Distribution — dst_hyper • distionary</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="Specific Formulas for Quantities — .quantities" />
-<meta property="og:description" content="Formulas for quantities (such as mean, variance, skewness, EVI, etc.)
-of select parametric distributions." />
+<meta property="og:title" content="Hypergeometric Distribution — dst_hyper" />
+<meta property="og:description" content="Makes a distribution belonging to the family of
+hypergeometric distributions." />
 
 
 
@@ -109,50 +109,44 @@ of select parametric distributions." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Specific Formulas for Quantities</h1>
+    <h1>Hypergeometric Distribution</h1>
     
-    <div class="hidden name"><code>dot-quantities.Rd</code></div>
+    <div class="hidden name"><code>dst_hyper.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Formulas for quantities (such as mean, variance, skewness, EVI, etc.)
-of select parametric distributions.</p>
+    <p>Makes a distribution belonging to the family of
+hypergeometric distributions.</p>
     </div>
 
-    <pre class="usage"><span class='va'>.quantities</span></pre>
+    <pre class="usage"><span class='fu'>dst_hyper</span><span class='op'>(</span><span class='va'>K</span>, <span class='va'>N</span>, <span class='va'>n</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>K</th>
+      <td><p>the number of success states in the population</p></td>
+    </tr>
+    <tr>
+      <th>N</th>
+      <td><p>the population size</p></td>
+    </tr>
+    <tr>
+      <th>n</th>
+      <td><p>the number of draws</p></td>
+    </tr>
+    </table>
 
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
-
-    <p>An object of class <code>list</code> of length 18.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>A list, where each distribution gets a (named) entry, with name
-given by the suffix of <code>dst_</code> (such as "norm", "unif", etc.). Each
-distribution's entry is itself a named list of expressions, where the
-name is the name of the quantity matching the distionary function name:</p><ul>
-<li><p>mean</p></li>
-<li><p>median</p></li>
-<li><p>variance</p></li>
-<li><p>skewness</p></li>
-<li><p>kurtosis_exc</p></li>
-<li><p>range</p></li>
-<li><p>evi</p></li>
-</ul>
-
-<p>Each expression is allowed to
-refer to the distribution's parameters by name.</p>
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>Although R allows us to evaluate distributional representations
-of certain parametric distributions through functions with
-<code>p</code>, <code>d</code>, <code>q</code>, and <code>r</code> prefixes (such as <code><a href='https://rdrr.io/r/stats/Normal.html'>pnorm()</a></code>, <code><a href='https://rdrr.io/r/stats/Normal.html'>dnorm()</a></code>, etc.),
-R does not "come with" formulas for quantities such as mean, variance,
-EVI, etc. Although these quantities can be computed from a distributional
-representation (such as integrating the quantile function to get the mean),
-it's often inefficient to rely on such computations. We therefore include
-formulas here, and check them using testthat.</p>
-
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='r-in'><span class='fu'>dst_hyper</span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>5</span>, <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> hyper parametric dst</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  name :</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "hyper"</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

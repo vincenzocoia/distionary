@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convert base distribution to distplyr — dst_parametric • distionary</title>
+<title>Convert p/d/q/r Representations to a Distribution — dst_parametric • distionary</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="Convert base distribution to distplyr — dst_parametric" />
+<meta property="og:title" content="Convert p/d/q/r Representations to a Distribution — dst_parametric" />
 <meta property="og:description" content="When a distribution has p, d, q, r functions available (such as
 pnorm(), dnorm(), etc.), dst_parametric() creates a distribution
 that draws on these four functions." />
@@ -110,7 +110,7 @@ that draws on these four functions." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Convert base distribution to distplyr</h1>
+    <h1>Convert p/d/q/r Representations to a Distribution</h1>
     
     <div class="hidden name"><code>dst_parametric.Rd</code></div>
     </div>
@@ -148,6 +148,9 @@ evaluated.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The <code>r</code> function is not needed, but is used if available.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'><span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'>dst_parametric</span><span class='op'>(</span><span class='st'>"norm"</span>, mean <span class='op'>=</span> <span class='fl'>0</span>, sd <span class='op'>=</span> <span class='fl'>1</span>, .variable <span class='op'>=</span> <span class='st'>"continuous"</span><span class='op'>)</span></span>
