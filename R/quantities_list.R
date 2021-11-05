@@ -230,7 +230,7 @@
   ),
   gev = rlang::exprs(
     mean = ifelse(shape >=1, Inf,
-                  ifelse(shape == 0, location + scale*gamma,
+                  ifelse(shape == 0, location - scale * digamma(1),
                          location + (scale*(gamma(1-shape) -1))/shape)),
     median = ifelse(shape != 0, location + scale*(log10(2)^(-shape)-1)/shape, location - scale*log10(log10(2))),
     variance = ifelse(shape >= 1/2, Inf,
