@@ -5,7 +5,7 @@
 #'
 #' @param lambda rate
 #'
-#' @example dst(1)
+#' @example dst_exp(1)
 #'
 #' @export
 dst_exp <- function(lambda){
@@ -15,6 +15,7 @@ dst_exp <- function(lambda){
   dst_parametric("exp",
                  rate = lambda,
                  .variable = "continuous")
+
 }
 
 
