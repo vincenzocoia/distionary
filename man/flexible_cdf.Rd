@@ -16,7 +16,8 @@ Could be a vector.}
 Logical.}
 }
 \description{
-Almost a direct application of cdf and survival function,
-but allows for the cdf to be calculated using \code{<} and the survival
-function to be calculated using \code{>=}.
+Probability to the left or right of a number, inclusive or not.
+\code{prob_left()} is a more general cdf defined using either \code{<} or \code{<=}, and
+\code{prob_right()} is a more general survival function defined using either
+\code{>} or \code{>=}.
 }

@@ -5,7 +5,7 @@
 \alias{.quantities}
 \title{Specific Formulas for Quantities}
 \format{
-An object of class \code{list} of length 6.
+An object of class \code{list} of length 18.
 }
 \usage{
 .quantities
@@ -18,7 +18,7 @@ of select parametric distributions.
 A list, where each distribution gets a (named) entry, with name
 given by the suffix of \code{dst_} (such as "norm", "unif", etc.). Each
 distribution's entry is itself a named list of expressions, where the
-name is the name of the quantity matching the distplyr function name:
+name is the name of the quantity matching the distionary function name:
 \itemize{
 \item mean
 \item median

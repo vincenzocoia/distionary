@@ -1,4 +1,4 @@
-#' Convert base distribution to distplyr
+#' Convert p/d/q/r Representations to a Distribution
 #'
 #' When a distribution has `p`, `d`, `q`, `r` functions available (such as
 #' `pnorm()`, `dnorm()`, etc.), `dst_parametric()` creates a distribution
@@ -11,6 +11,7 @@
 #' @param .variable Type of random variable represented by the distribution.
 #' Warning: defaults to "unknown", where density, pmf, and hazard cannot be
 #' evaluated.
+#' @details The `r` function is not needed, but is used if available.
 #' @examples
 #' d <- dst_parametric("norm", mean = 0, sd = 1, .variable = "continuous")
 #' eval_density(d, at = -3:3)
@@ -64,7 +65,8 @@ eval_density.parametric <- function(distribution, at, strict = TRUE) {
 	stop("Evaluating non-strict density for a parametric distribution is ",
 		 "not yet available. Check that your distribution's variable type ",
 		 "is specified correctly, or for mixed variables, consider creating ",
-		 "separate continuous and discrete distributions and running `mix()`.")
+		 "separate continuous and discrete distributions and",
+		 "running `distplyr::mix()`.")
 }
 
 #' @export

@@ -2,7 +2,7 @@
 % Please edit documentation in R/dst_parametric.R
 \name{dst_parametric}
 \alias{dst_parametric}
-\title{Convert base distribution to distplyr}
+\title{Convert p/d/q/r Representations to a Distribution}
 \usage{
 dst_parametric(
   .name,
@@ -25,6 +25,9 @@ evaluated.}
 When a distribution has \code{p}, \code{d}, \code{q}, \code{r} functions available (such as
 \code{pnorm()}, \code{dnorm()}, etc.), \code{dst_parametric()} creates a distribution
 that draws on these four functions.
+}
+\details{
+The \code{r} function is not needed, but is used if available.
 }
 \examples{
 d <- dst_parametric("norm", mean = 0, sd = 1, .variable = "continuous")

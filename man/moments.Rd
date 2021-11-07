@@ -47,6 +47,9 @@ skewness, and kurtosis.
 If there is no method associated with a subclass of
 \code{x}, then moments are calculated using
 \code{stats::integrate()} from the quantile function.
+
+Median is calculated as the 0.5-quantile. So, when the median is
+non-unique, we take the smallest of the possibilities.
 }
 \examples{
 a <- dst_gpd(0, 1, 0.5)
