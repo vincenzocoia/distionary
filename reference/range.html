@@ -122,20 +122,20 @@ for a given distribution.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for finite</span>
-<span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>...</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>distribution</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for dst</span>
-<span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>...</span>, na.rm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+<span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>distribution</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>...</th>
+      <th>distribution</th>
       <td><p>Single distribution to compute range from.</p></td>
     </tr>
     <tr>
-      <th>na.rm</th>
+      <th>...</th>
       <td><p>Not used; vestige of the <code><a href='https://rdrr.io/r/base/range.html'>base::range()</a></code> S3 generic.</p></td>
     </tr>
     </table>
@@ -151,11 +151,29 @@ using <code><a href='eval_quantile.html'>eval_quantile()</a></code> at 0 and at 
 <span class='r-in'><span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dst_unif.html'>dst_unif</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span></span>
 <span class='r-in'><span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dst_norm.html'>dst_norm</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>4</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]   0 Inf</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error:</span> `...` is not empty.</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> We detected these problematic arguments:</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> * `na.rm`</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> These dots only exist to allow future extensions and should be empty.</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> Did you misspecify an argument?</span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>b</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0 1</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error:</span> `...` is not empty.</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> We detected these problematic arguments:</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> * `na.rm`</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> These dots only exist to allow future extensions and should be empty.</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> Did you misspecify an argument?</span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span></span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] -Inf  Inf</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error:</span> `...` is not empty.</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> We detected these problematic arguments:</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> * `na.rm`</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> These dots only exist to allow future extensions and should be empty.</span>
+<span class='r-err co'><span class='r-pr'>#&gt;</span> Did you misspecify an argument?</span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
