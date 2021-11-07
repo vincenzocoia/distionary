@@ -11,11 +11,11 @@
 #' dst_gev(0, 1, 1)
 #'
 #' @export
-dst_parametric(location, scale, shape){
+dst_gev <- function(location, scale, shape){
   if (scale <= 0){
     stop("scale' parameter must be positive")
   }
   dst_parametric("gev",
                  location = location, scale = scale, shape = shape,
-                 .variable = "continous")
+                 .variable = "continuous")
 }
