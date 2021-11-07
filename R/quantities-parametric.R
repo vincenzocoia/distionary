@@ -30,13 +30,9 @@ evi.parametric <- function(distribution) {
 }
 
 #' @export
-range.parametric <- function(..., na.rm = FALSE) {
-  distribution <- rlang::list2(...)
-  n <- length(distribution)
-  if (n > 1) {
-    stop("`range()` only allows for one distribution; found ", n, ".")
-  }
-	quantity_parametric(distribution[[1L]], "range")
+range.parametric <- function(distribution, ...) {
+  ellipsis::check_dots_empty()
+	quantity_parametric(distribution, "range")
 }
 
 #' @export
