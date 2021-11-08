@@ -15,3 +15,7 @@ dst_gamma(alpha, beta)
 Makes a distribution belonging to the family of
 Gamma distributions.
 }
+\examples{
+dst_gamma(2, 1)
+
+}
