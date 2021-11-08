@@ -15,3 +15,7 @@ dst_binom(size, p)
 Makes a distribution belonging to the family of
 binomial distributions.
 }
+\examples{
+dst_binom(10, 0.6)
+
+}
