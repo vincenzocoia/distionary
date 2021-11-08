@@ -13,3 +13,7 @@ dst_exp(lambda)
 Makes a distribution belonging to the family of
 exponential distributions.
 }
+\examples{
+dst_exp(1)
+
+}
