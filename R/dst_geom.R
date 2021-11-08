@@ -5,7 +5,8 @@
 #'
 #' @param p probability of success in each trial. 0 < p <= 1
 #'
-#' @example dst_geom(0.4)
+#' @examples
+#' dst_geom(0.4)
 #'
 #' @export
 dst_geom <- function(p){
