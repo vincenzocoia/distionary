@@ -7,11 +7,15 @@
 dst_weibull(lambda, gamma)
 }
 \arguments{
-\item{lambda}{0 scale}
+\item{lambda}{scale positive}
 
-\item{gamma}{0 shape}
+\item{gamma}{shape positive}
 }
 \description{
 Makes a distribution belonging to the family of
 Weibull distributions.
+}
+\examples{
+dst_weibull(1, 1)
+
 }
