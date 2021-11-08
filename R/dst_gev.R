@@ -3,19 +3,20 @@
 #' Makes a distribution belonging to the family of
 #' gev distributions.
 #'
-#' @param location
-#' @param scale
-#' @param shape
+#' @param location real number
+#' @param scale positive
+#' @param shape real number
 #'
-#' @example
+#' @examples
 #' dst_gev(0, 1, 1)
 #'
+#'
 #' @export
-dst_parametric(location, scale, shape){
+dst_gev <- function(location, scale, shape){
   if (scale <= 0){
     stop("scale' parameter must be positive")
   }
   dst_parametric("gev",
                  location = location, scale = scale, shape = shape,
-                 .variable = "continous")
+                 .variable = "continuous")
 }
