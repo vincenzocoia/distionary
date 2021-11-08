@@ -6,7 +6,8 @@
 #' @param size number of trials
 #' @param p success probability for each trial
 #'
-#' @example dst_binom(10, 0.6)
+#' @examples
+#' dst_binom(10, 0.6)
 #'
 #' @export
 dst_binom <- function(size, p){
