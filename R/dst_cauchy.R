@@ -4,7 +4,7 @@
 #' cauchy distributions.
 #'
 #' @param location Location parameter
-#' @param scale > 0
+#' @param scale positive
 #'
 #' @examples
 #' dst_cauchy(0, 1)
