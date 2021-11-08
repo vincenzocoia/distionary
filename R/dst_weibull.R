@@ -3,10 +3,11 @@
 #' Makes a distribution belonging to the family of
 #' Weibull distributions.
 #'
-#' @param lambda > 0 scale
-#' @param gamma > 0 shape
+#' @param lambda scale positive
+#' @param gamma shape positive
 #'
-#' @example dst_weibull(1, 1)
+#' @examples
+#' dst_weibull(1, 1)
 #'
 #' @export
 dst_weibull <- function(lambda, gamma){
