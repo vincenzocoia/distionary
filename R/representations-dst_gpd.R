@@ -68,3 +68,8 @@ eval_density.gpd <- function(distribution, at, strict = TRUE) {
 		}
 	})
 }
+
+#' @export
+eval_survival.gpd <- function(distribution, at) {
+  1 - eval_cdf(distribution, at = at)
+}
