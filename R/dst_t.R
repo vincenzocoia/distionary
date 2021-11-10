@@ -3,9 +3,10 @@
 #' Makes a distribution belonging to the family of
 #' t distributions.
 #'
-#'@param df >0 degrees of freedom
+#'@param df degrees of freedom; positive
 #'
-#'@example dst_t(3)
+#'@examples
+#' dst_t(3)
 #'
 #'@export
 dst_t <- function(df){

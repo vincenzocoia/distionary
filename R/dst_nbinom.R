@@ -4,9 +4,11 @@
 #' negative binomial distributions.
 #'
 #'@param prob probabilities
-#'@param size > 0 target for number of successful trials
+#'@param size target for number of successful trials; non-negative
 #'
-#'@example dst_nbinom(0.5, 10)
+#'@examples
+#' dst_nbinom(0.5, 10)
+#'
 #'
 #'@export
 dst_nbinom <- function(size, prob){

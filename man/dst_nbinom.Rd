@@ -7,11 +7,16 @@
 dst_nbinom(size, prob)
 }
 \arguments{
-\item{size}{0 target for number of successful trials}
+\item{size}{target for number of successful trials; non-negative}
 
 \item{prob}{probabilities}
 }
 \description{
 Makes a distribution belonging to the family of
 negative binomial distributions.
+}
+\examples{
+dst_nbinom(0.5, 10)
+
+
 }

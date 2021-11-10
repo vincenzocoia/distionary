@@ -5,7 +5,8 @@
 #'
 #' @param k degrees of freedom
 #'
-#' @example dst_chisq(3)
+#' @examples
+#' dst_chisq(3)
 #'
 #' @export
 dst_chisq <- function(k){

@@ -5,7 +5,8 @@
 #'
 #' @param lambda rate
 #'
-#' @example dst_exp(1)
+#' @examples
+#' dst_exp(1)
 #'
 #' @export
 dst_exp <- function(lambda){

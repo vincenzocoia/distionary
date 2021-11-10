@@ -13,3 +13,7 @@ dst_geom(p)
 Makes a distribution belonging to the family of
 geometric distributions.
 }
+\examples{
+dst_geom(0.4)
+
+}

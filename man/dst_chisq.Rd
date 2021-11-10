@@ -13,3 +13,7 @@ dst_chisq(k)
 Makes a distribution belonging to the family of
 Chi-squared distributions.
 }
+\examples{
+dst_chisq(3)
+
+}

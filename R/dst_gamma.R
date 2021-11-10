@@ -6,7 +6,8 @@
 #' @param alpha shape > 0
 #' @param beta rate > 0
 #'
-#' @example dst_gamma(2, 1)
+#' @examples
+#' dst_gamma(2, 1)
 #'
 #' @export
 dst_gamma <- function(alpha, beta){
