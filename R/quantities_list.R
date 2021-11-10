@@ -102,10 +102,10 @@
     range = c(0, 1)
   ),
   binom = rlang::exprs(
-    mean = size * p,
-    variance = size * p * (1-p),
-    skewness = ((1-p) - p)/sqrt( size * p * (1-p)),
-    kurtosis_exc = (1 - 6 * p * (1-p))/(size * p * (1-p)),
+    mean = size * prob,
+    variance = size * prob * (1-prob),
+    skewness = ((1-prob) - prob)/sqrt( size * prob * (1-prob)),
+    kurtosis_exc = (1 - 6 * prob * (1-prob))/(size * prob * (1-prob)),
     range = c(0, size)
   ),
   nbinom = rlang::exprs(
@@ -118,11 +118,11 @@
     #evi = FILL_THIS_IN not sure
   ),
   geom = rlang::exprs(
-    mean = 1/p,
+    mean = 1/prob,
     #median = ifelse((-1)/log2(1 - p)%%1 != 0, (-1)/log2(1 - p), 'No unique integer'), # not sure
-    variance = (1 - p)/p^2,
-    skewness = (2 - p)/sqrt(1 - p),
-    kurtosis_exc = 6 + p^2/(1 - p),
+    variance = (1 - prob)/prob^2,
+    skewness = (2 - prob)/sqrt(1 - prob),
+    kurtosis_exc = 6 + prob^2/(1 - prob),
     range = c(0, 1)
     #evi = FILL_THIS_IN not sure
   ),
@@ -136,28 +136,28 @@
     evi = 0
   ),
   weibull = rlang::exprs(
-    mean = lambda*gamma(1 + 1/k),
-    median = lambda*(log10(2)^(1/k)),
-    variance = lambda^2 * (gamma(1 + 2/k) - (gamma(1 + 1/k))^2),
-    skewness = (gamma(1 + 3/k)*(lambda^3) - 3*lambda*gamma(1 + 1/k)*(sqrt(lambda^2 * (gamma(1 + 2/k) - (gamma(1 + 1/k))^2))^2)  - (lambda*gamma(1 + 1/k))^3)/sqrt(lambda^2 * (gamma(1 + 2/k) - (gamma(1 + 1/k))^2))^3,
-    kurtosis_exc = ((lambda^4) * gamma(1 + 4/k) - 4*((gamma(1 + 3/k)*(lambda^3) - 3*lambda*gamma(1 + 1/k)*(sqrt(lambda^2 * (gamma(1 + 2/k) - (gamma(1 + 1/k))^2))^2)  - (lambda*gamma(1 + 1/k))^3)/sqrt(lambda^2 * (gamma(1 + 2/k) - (gamma(1 + 1/k))^2))^3)*(sigma^3)*(lambda*gamma(1 + 1/k)) - 6*(mu^2)*(lambda^2 * (gamma(1 + 2/k) - (gamma(1 + 1/k))^2)) - (lambda*gamma(1 + 1/k))^4)/(sqrt(lambda^2 * (gamma(1 + 2/k) - (gamma(1 + 1/k))^2))^4) - 3,
+    mean = scale*gamma(1 + 1/shape),
+    median = scale*(log10(2)^(1/shape)),
+    variance = scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2),
+    skewness = (gamma(1 + 3/shape)*(scale^3) - 3*scale*gamma(1 + 1/shape)*(sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^2)  - (scale*gamma(1 + 1/shape))^3)/sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^3,
+    kurtosis_exc = ((scale^4) * gamma(1 + 4/shape) - 4*((gamma(1 + 3/shape)*(scale^3) - 3*scale*gamma(1 + 1/shape)*(sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^2)  - (scale*gamma(1 + 1/shape))^3)/sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^3)*(sigma^3)*(scale*gamma(1 + 1/shape)) - 6*((scale*gamma(1 + 1/shape))^2)*(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2)) - (scale*gamma(1 + 1/shape))^4)/(sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^4) - 3,
     range = c(0, Inf)
     #evi = FILL_THIS_IN
   ),
   gamma = rlang::exprs(
-    mean = alpha/beta,
-    variance = alpha/beta^2,
-    skewness = 2/sqrt(alpha),
-    kurtosis_exc = 6/alpha,
+    mean = shape/rate,
+    variance = shape/rate^2,
+    skewness = 2/sqrt(shape),
+    kurtosis_exc = 6/shape,
     range = c(0, Inf)
     #evi = FILL_THIS_IN
   ),
   chisq = rlang::exprs(
-      mean = k,
-      median = k*((1 - 2/9*k)^3),
-      variance = 2*k,
-      skewness = sqrt(8/k),
-      kurtosis_exc = 12/k,
+      mean = df,
+      median = df*((1 - 2/9*df)^3),
+      variance = 2*df,
+      skewness = sqrt(8/df),
+      kurtosis_exc = 12/df,
       range = c(0, 1)
     ),
   cauchy = rlang::exprs(
@@ -170,14 +170,14 @@
       range = c(-Inf, Inf)
   ),
   hyper = rlang::exprs(
-       mean = n * K / N,
+       mean = (N - K) * K / N,
        #median = FILL_THIS_IN,
-       variance = n* K/N * (N-K)/N * (N-n)/(N-1),
-       skewness = (N - 2*K)((N-1)^(1/2))(N - 2*n)/
-                    (((n*K*(N-K)(N - n))^(1/2))(N - 2)),
-       kurtosis_exc = 1/(n*K*(N - K)*(N-n)*(N-2)*(N-3)) *
-                        ((N-1)*(N^2) *(N*(N+1)-6*K(N-K) - 6*n*(N-n)) +
-                           6*n*K*(N-K)*(N-n)*(5*N-6)),
+       variance = (N - K)* K/N * (N-K)/N * K/(N-1),
+       skewness = (N - 2*K)((N-1)^(1/2))(N - 2*(N - K))/
+                    ((((N - K)*K*(N-K)*K)^(1/2))(N - 2)),
+       kurtosis_exc = 1/((N - K)*K*(N - K)*K*(N-2)*(N-3)) *
+                        ((N-1)*(N^2) *(N*(N+1)-6*K(N-K) - 6*(N - K)*K) +
+                           6*(N - K)*K*(N-K)*K*(5*N-6)),
        range = c(0, 1)
        #evi = FILL_THIS_IN
   ),
