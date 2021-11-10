@@ -4,8 +4,8 @@
 #' containing the minimum value, and the 1st index containing the maximum value
 #' for a given distribution.
 #'
-#' @param ... Single distribution to compute range from.
-#' @param na.rm Not used; vestige of the `base::range()` S3 generic.
+#' @param distribution Single distribution to compute range from.
+#' @param ... Not used; vestige of the `base::range()` S3 generic.
 #' @details If there are no methods for the distribution's class,
 #' the range is calculated
 #' using `eval_quantile()` at 0 and at 1.
@@ -18,11 +18,13 @@
 #' range(c)
 #' @rdname range
 #' @export
-range.dst <- function(..., na.rm = FALSE) {
-  ellipsis <- rlang::list2(...)
-  n <- length(ellipsis)
-  if (n > 1) {
-    stop("Can only find the range of one distribution; received ", n)
-  }
-  eval_quantile(ellipsis[[1L]], at = 0:1)
+range.dst <- function(distribution, ...) {
+  ellipsis::check_dots_empty()
+  # ellipsis <- rlang::list2(...)
+  # n <- length(ellipsis)
+  # if (n > 1) {
+    # stop("Can only find the range of one distribution; received ", n)
+  # }
+  # eval_quantile(ellipsis[[1L]], at = 0:1)
+  eval_quantile(distribution, at = 0:1)
 }

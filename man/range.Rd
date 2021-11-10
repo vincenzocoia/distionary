@@ -5,14 +5,14 @@
 \alias{range.dst}
 \title{Range of Distribution}
 \usage{
-\method{range}{finite}(..., na.rm = FALSE)
+\method{range}{finite}(distribution, ...)
 
-\method{range}{dst}(..., na.rm = FALSE)
+\method{range}{dst}(distribution, ...)
 }
 \arguments{
-\item{...}{Single distribution to compute range from.}
+\item{distribution}{Single distribution to compute range from.}
 
-\item{na.rm}{Not used; vestige of the \code{base::range()} S3 generic.}
+\item{...}{Not used; vestige of the \code{base::range()} S3 generic.}
 }
 \description{
 Range returns a 2 index vector with the 0th index
