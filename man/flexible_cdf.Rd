@@ -2,9 +2,12 @@
 % Please edit documentation in R/flexible_cdf.R
 \name{prob_left}
 \alias{prob_left}
+\alias{prob_right}
 \title{Find the probability left or right of a number}
 \usage{
 prob_left(distribution, of, inclusive)
+
+prob_right(distribution, of, inclusive)
 }
 \arguments{
 \item{distribution}{Distribution to find probabilities of.}

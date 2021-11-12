@@ -21,7 +21,7 @@ prob_left <- function(distribution, of, inclusive) {
 	p_left
 }
 
-#' @inheritParams prob_left
+#' @rdname flexible_cdf
 #' @export
 prob_right <- function(distribution, of, inclusive) {
 	p_right <- eval_survival(distribution, at = of)
