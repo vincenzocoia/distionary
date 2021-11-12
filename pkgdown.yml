@@ -1,6 +1,8 @@
 pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2021-11-07T23:04Z
+articles:
+  evaluate: evaluate.html
+  specify: specify.html
+last_built: 2021-11-12T03:43Z
 

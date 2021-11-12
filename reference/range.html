@@ -89,6 +89,21 @@ for a given distribution." />
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/evaluate.html">Evaluating distributions</a>
+    </li>
+    <li>
+      <a href="../articles/specify.html">Specify a distribution</a>
+    </li>
+  </ul>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -151,29 +166,11 @@ using <code><a href='eval_quantile.html'>eval_quantile()</a></code> at 0 and at 
 <span class='r-in'><span class='va'>b</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dst_unif.html'>dst_unif</a></span><span class='op'>(</span><span class='fl'>0</span>, <span class='fl'>1</span><span class='op'>)</span></span>
 <span class='r-in'><span class='va'>c</span> <span class='op'>&lt;-</span> <span class='fu'><a href='dst_norm.html'>dst_norm</a></span><span class='op'>(</span><span class='fl'>3</span>, <span class='fl'>4</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error:</span> `...` is not empty.</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> We detected these problematic arguments:</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> * `na.rm`</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> These dots only exist to allow future extensions and should be empty.</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> Did you misspecify an argument?</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1]   0 Inf</span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>b</span><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error:</span> `...` is not empty.</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> We detected these problematic arguments:</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> * `na.rm`</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> These dots only exist to allow future extensions and should be empty.</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> Did you misspecify an argument?</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] 0 1</span>
 <span class='r-in'><span class='fu'><a href='https://rdrr.io/r/base/range.html'>range</a></span><span class='op'>(</span><span class='va'>c</span><span class='op'>)</span></span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> <span class='error'>Error:</span> `...` is not empty.</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> We detected these problematic arguments:</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> * `na.rm`</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> </span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> These dots only exist to allow future extensions and should be empty.</span>
-<span class='r-err co'><span class='r-pr'>#&gt;</span> Did you misspecify an argument?</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] -Inf  Inf</span>
 </pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
