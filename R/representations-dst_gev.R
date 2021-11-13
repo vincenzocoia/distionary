@@ -27,18 +27,18 @@ eval_quantile.gev <- function(distribution, at, ...) {
   with(parameters(distribution), {
     invalid <- at < 0 | at > 1
     if (shape == 0) {
-      res <- location - scale * log(- log(p) )
+      res <- location - scale * log(- log(at) )
       res[invalid] <- NaN
       res
     } else {
       if (shape > 0) {
         invalid_at <- at == 1
-        res <- location + scale * ((- log(p)) ^ (- shape) - 1) / shape
+        res <- location + scale * ((- log(at)) ^ (- shape) - 1) / shape
         res[invalid_at] <- NaN
         res
       } else {
         invalid_at <- at == 0
-        res <- location + scale * ((- log(p)) ^ (- shape) - 1) / shape
+        res <- location + scale * ((- log(at)) ^ (- shape) - 1) / shape
         res[invalid_at] <- NaN
         res
       }
