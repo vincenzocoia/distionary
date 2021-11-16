@@ -3,15 +3,15 @@
 #' Makes a distribution belonging to the family of
 #' t distributions.
 #'
-#'@param df degrees of freedom; positive
+#'@param df Degrees of freedom; positive.
 #'
 #'@examples
 #' dst_t(3)
 #'
 #'@export
 dst_t <- function(df){
-  if(df <= 0){
-    stop('df must be positive')
+  if (df <= 0) {
+    stop('df must be positive.')
   }
   dst_parametric("t", df = df, .variable = "continuous")
 }

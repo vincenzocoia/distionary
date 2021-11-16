@@ -3,22 +3,21 @@
 #' Makes a distribution belonging to the family of
 #' Weibull distributions.
 #'
-#' @param scale scale positive
-#' @param shape shape positive
+#' @param scale Scale parameter; positive.
+#' @param shape Shape parameter; positive.
 #'
 #' @examples
 #' dst_weibull(1, 1)
 #'
 #' @export
-dst_weibull <- function(shape, scale){
-  if(scale <= 0){
-    stop('scale parameter must be positive')
+dst_weibull <- function(shape, scale) {
+  if (scale <= 0) {
+    stop('scale parameter must be positive.')
   }
-  if(shape <= 0){
-    stop('shape parameter must be positive')
+  if (shape <= 0) {
+    stop('shape parameter must be positive.')
   }
-  dst_parametric("weibull",
-                 shape = shape,
-                 scale = scale,
-                 .variable = "continuous")
+  dst_parametric(
+    "weibull", shape = shape, scale = scale, .variable = "continuous"
+  )
 }

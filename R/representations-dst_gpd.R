@@ -71,5 +71,26 @@ eval_density.gpd <- function(distribution, at, strict = TRUE) {
 
 #' @export
 eval_survival.gpd <- function(distribution, at) {
-  1 - eval_cdf(distribution, at = at)
+  with(parameters(distribution), {
+    if (shape == 0) {
+      left <- at < location
+      z <- (at - location) / scale
+      res <- exp(-z)
+      res[left] <- 1
+      res
+    } else {
+      if (shape > 0) {
+        rightend <- Inf
+      } else {
+        rightend <- location - scale / shape
+      }
+      left <- at < location
+      right <- at > rightend
+      z <- (at - location) / scale
+      res <- (1 + shape * z)^(-1 / shape)
+      res[left] <- 1
+      res[right] <- 0
+      res
+    }
+  })
 }
