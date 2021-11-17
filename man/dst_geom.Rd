@@ -4,12 +4,15 @@
 \alias{dst_geom}
 \title{Geometric Distribution}
 \usage{
-dst_geom(p)
+dst_geom(prob)
 }
 \arguments{
-\item{p}{probability of success in each trial. 0 < p <= 1}
+\item{prob}{Probability of success in each trial; 0 < \code{p} <= 1.}
 }
 \description{
 Makes a distribution belonging to the family of
 geometric distributions.
+}
+\examples{
+dst_geom(0.4)
 }

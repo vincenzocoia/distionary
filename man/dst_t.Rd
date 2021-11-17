@@ -7,9 +7,13 @@
 dst_t(df)
 }
 \arguments{
-\item{df}{0 degrees of freedom}
+\item{df}{Degrees of freedom; positive.}
 }
 \description{
 Makes a distribution belonging to the family of
 t distributions.
+}
+\examples{
+dst_t(3)
+
 }

@@ -4,10 +4,10 @@
 \alias{dst_bern}
 \title{Bernoulli Distribution}
 \usage{
-dst_bern(p)
+dst_bern(prob)
 }
 \arguments{
-\item{p}{}
+\item{prob}{Probability of success.}
 }
 \description{
 Makes a distribution belonging to the family of

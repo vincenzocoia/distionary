@@ -1,3 +1,35 @@
+#' Check hard-coded quantities
+#'
+#' Checks that the hard-coded quantities for the distributions in the
+#' `.quantities` list match the default computations (for example,
+#' integrating the quantile function to calculate the mean).
+#'
+#' @param distribution A distribution object to check.
+#' @param name Name of the quantity to check, such as "mean". Character.
+#' Should also be the name of a function.
+#' @param tolerance The tolerance level in the `expect_equal()` call
+#' when comparing the two quantities.
+#' @return Invisible, if the name doesn't exist in the `.quantity` list
+#' for that distribution, or the output of an `expect_` function from
+#' the testthat package.
+#' @note If a quantity is infinite, the default computation is expected
+#' to be an error (such as through a divergent integral), and so
+#' `expect_error()` is used in that situation.
+check_quantity <- function(distribution, name, tolerance = 1e-3) {
+  name_exists <- !is.null(.quantities[[distribution$name]][[name]])
+  if (name_exists) {
+    name.dst <- paste0(name, ".dst")
+    quantity_from_list <- rlang::exec(name, distribution)
+    if (is.infinite(quantity_from_list)) {
+      expect_error(rlang::exec(name.dst, distribution))
+    } else {
+      quantity_default <- rlang::exec(name.dst, distribution)
+      expect_equal(quantity_from_list, quantity_default, tolerance = tolerance)
+    }
+  }
+  invisible()
+}
+
 test_that("quantities align with numeric computations.", {
   distributions <- list(
     dst_norm(0, 1),
@@ -23,27 +55,11 @@ test_that("quantities align with numeric computations.", {
     # dst_t(4.2)
   )
   for (d in distributions) {
-    ## Means
-    if (!is.null(.quantities[[d$name]][["mean"]])) {
-      mu1 <- mean(d)
-      if (is.infinite(mu1)) {
-        expect_error(mean.dst(d))
-      } else {
-        expect_equal(mu1, mean.dst(d))
-      }
-    }
-    ## Medians
-    if (!is.null(.quantities[[d$name]][["median"]])) {
-      med1 <- median(d)
-      expect_equal(med1, median.dst(d))
-    }
-    ## Variance
-    if (!is.null(.quantities[[d$name]][["variance"]])) {
-      var1 <- variance(d)
-      ## Problematic for dst_gpd -- for some reason, variance.dst is looking
-      ##  for a function pgpd (but the cdf is coded up in eval_cdf.gpd).
-      expect_equal(var1, variance.dst(d))
-    }
+    check_quantity(d, "mean")
+    check_quantity(d, "variance")
+    check_quantity(d, "skewness")
+    check_quantity(d, "kurtosis_exc")
+    check_quantity(d, "median")
   }
 })
 

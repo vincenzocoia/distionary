@@ -4,12 +4,16 @@
 \alias{dst_exp}
 \title{Exponential Distribution}
 \usage{
-dst_exp(lambda)
+dst_exp(rate)
 }
 \arguments{
-\item{lambda}{rate}
+\item{rate}{Rate.}
 }
 \description{
 Makes a distribution belonging to the family of
 exponential distributions.
+}
+\examples{
+dst_exp(1)
+
 }

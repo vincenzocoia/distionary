@@ -9,7 +9,7 @@ dst_cauchy(location, scale)
 \arguments{
 \item{location}{Location parameter}
 
-\item{scale}{0}
+\item{scale}{positive}
 }
 \description{
 Makes a distribution belonging to the family of

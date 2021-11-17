@@ -34,14 +34,9 @@ Identical to \code{\link[=dst_finite]{dst_finite()}} with weights as probabiliti
 except weights need not add to 1.
 }
 \examples{
-require(graphics)
-require(datasets)
-marg <- dst_empirical(hp, data = mtcars)
-plot(marg, "cdf", n = 1001)
-
-K <- function(x) dnorm(x, sd = 25)
-cond <- dst_empirical(hp, data = mtcars, weights = K(disp - 150))
-plot(cond, "cdf", n = 1001, lty = 2, add = TRUE)
+x <- rnorm(100)
+dst_empirical(x)
+dst_empirical(value, data = data.frame(value = x))
 }
 \seealso{
 \code{\link[=dst_finite]{dst_finite()}}

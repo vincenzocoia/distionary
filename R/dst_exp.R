@@ -3,19 +3,17 @@
 #' Makes a distribution belonging to the family of
 #' exponential distributions.
 #'
-#' @param lambda rate
+#' @param rate Rate.
 #'
-#' @example dst_exp(1)
+#' @examples
+#' dst_exp(1)
 #'
 #' @export
-dst_exp <- function(lambda){
-  if(lambda <= 0){
-    stop('lambda must be greater than 0')
+dst_exp <- function(rate) {
+  if (rate <= 0) {
+    stop('rate must be greater than 0.')
   }
-  dst_parametric("exp",
-                 rate = lambda,
-                 .variable = "continuous")
-
+  dst_parametric("exp", rate = rate, .variable = "continuous")
 }
 
 

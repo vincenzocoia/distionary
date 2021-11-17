@@ -4,14 +4,17 @@
 \alias{dst_gamma}
 \title{Gamma Distribution}
 \usage{
-dst_gamma(alpha, beta)
+dst_gamma(shape, rate)
 }
 \arguments{
-\item{alpha}{shape > 0}
+\item{shape}{Shape parameter; positive.}
 
-\item{beta}{rate > 0}
+\item{rate}{Rate parameter; positive.}
 }
 \description{
 Makes a distribution belonging to the family of
 Gamma distributions.
+}
+\examples{
+dst_gamma(2, 1)
 }

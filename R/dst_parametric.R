@@ -20,6 +20,11 @@
 #' @export
 dst_parametric <- function(
 	.name, ..., .variable = c("unknown", "continuous", "discrete", "mixed")) {
+  if (!pdq_functions_all_exist(.name)) {
+    stop(
+      'Could not find p/d/q functions for the distribution named ', .name, "."
+    )
+  }
 	v <- match.arg(.variable)
 	dots <- rlang::enquos(...)
 	param_names <- names(dots)
@@ -29,6 +34,28 @@ dst_parametric <- function(
 	res <- list(name = .name,
 				parameters = params)
 	new_distribution(res, variable = v, class = c(.name, "parametric"))
+}
+
+#' Are there p/d/q functions available?
+#'
+#' For a given distribution name, such as "norm", checks to see
+#' whether or not p/d/q functions all exist for that distribution --
+#' such as `pnorm()`, `dnorm()`, and `qnorm()`.
+#' Methods for `eval_cdf()`, `eval_quantile()`, and `eval_density/mass()`
+#' suffice as alternatives. Internal function.
+#'
+#' @param name Name of the distribution; suffix to p/d/q.
+#' @return `TRUE` if p/d/q functions are all available for this distribution;
+#' `FALSE` otherwise.
+pdq_functions_all_exist <- function(name) {
+  p_exists <- exists(paste0("p", name)) ||
+    exists(paste0("eval_cdf.", name))
+  d_exists <- exists(paste0("d", name)) ||
+    exists(paste0("eval_density.", name)) ||
+    exists(paste0("eval_pmf.", name))
+  q_exists <- exists(paste0("q", name)) ||
+    exists(paste0("eval_quantile.", name))
+  p_exists && d_exists && q_exists
 }
 
 #' @export

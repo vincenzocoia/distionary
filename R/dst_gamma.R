@@ -3,23 +3,20 @@
 #' Makes a distribution belonging to the family of
 #' Gamma distributions.
 #'
-#' @param alpha shape > 0
-#' @param beta rate > 0
+#' @param shape Shape parameter; positive.
+#' @param rate Rate parameter; positive.
 #'
-#' @example dst_gamma(2, 1)
-#'
+#' @examples
+#' dst_gamma(2, 1)
 #' @export
-dst_gamma <- function(alpha, beta){
-  if (alpha <= 0) {
-    stop("alpha must be positive.")
+dst_gamma <- function(shape, rate) {
+  if (shape <= 0) {
+    stop("shape paramter must be positive.")
   }
-  if (beta <= 0) {
-    stop("beta must be positive.")
+  if (rate <= 0) {
+    stop("rate parameter must be positive.")
   }
-  dst_parametric("gamma",
-                 shape = alpha,
-                 rate = beta,
-                 .variable = "continuous")
+  dst_parametric("gamma", shape = shape, rate = rate, .variable = "continuous")
 }
 
 
