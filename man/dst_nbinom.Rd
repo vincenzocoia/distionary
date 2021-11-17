@@ -16,5 +16,5 @@ Makes a distribution belonging to the family of
 negative binomial distributions.
 }
 \examples{
-dst_nbinom(0.5, 10)
+dst_nbinom(10, 0.5)
 }
