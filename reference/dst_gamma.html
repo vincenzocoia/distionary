@@ -142,22 +142,29 @@ Gamma distributions." />
 Gamma distributions.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>dst_gamma</span><span class='op'>(</span><span class='va'>alpha</span>, <span class='va'>beta</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>dst_gamma</span><span class='op'>(</span><span class='va'>shape</span>, <span class='va'>rate</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>alpha</th>
-      <td><p>shape &gt; 0</p></td>
+      <th>shape</th>
+      <td><p>Shape parameter; positive.</p></td>
     </tr>
     <tr>
-      <th>beta</th>
-      <td><p>rate &gt; 0</p></td>
+      <th>rate</th>
+      <td><p>Rate parameter; positive.</p></td>
     </tr>
     </table>
 
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='r-in'><span class='fu'>dst_gamma</span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>1</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> gamma parametric dst</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  name :</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "gamma"</span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
