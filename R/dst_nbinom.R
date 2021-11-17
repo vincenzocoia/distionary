@@ -6,7 +6,7 @@
 #' @param prob Probability parameter; between 0 and 1.
 #' @param size Target for number of successful trials; non-negative.
 #' @examples
-#' dst_nbinom(0.5, 10)
+#' dst_nbinom(10, 0.5)
 #' @export
 dst_nbinom <- function(size, prob) {
   if (prob < 0 || prob > 1) {

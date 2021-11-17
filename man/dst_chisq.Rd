@@ -4,10 +4,10 @@
 \alias{dst_chisq}
 \title{Chi-squared Distribution}
 \usage{
-dst_chisq(k)
+dst_chisq(df)
 }
 \arguments{
-\item{k}{degrees of freedom}
+\item{df}{degrees of freedom}
 }
 \description{
 Makes a distribution belonging to the family of

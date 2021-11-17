@@ -7,7 +7,7 @@
 dst_t(df)
 }
 \arguments{
-\item{df}{degrees of freedom; positive}
+\item{df}{Degrees of freedom; positive.}
 }
 \description{
 Makes a distribution belonging to the family of

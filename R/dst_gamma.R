@@ -9,11 +9,11 @@
 #' @examples
 #' dst_gamma(2, 1)
 #' @export
-dst_gamma <- function(shape, rate){
-  if (alpha <= 0) {
+dst_gamma <- function(shape, rate) {
+  if (shape <= 0) {
     stop("shape paramter must be positive.")
   }
-  if (beta <= 0) {
+  if (rate <= 0) {
     stop("rate parameter must be positive.")
   }
   dst_parametric("gamma", shape = shape, rate = rate, .variable = "continuous")

@@ -49,7 +49,7 @@ eval_density.gev <- function(distribution, at, strict = TRUE) {
 #' @note The shape parameter is not vectorized. This function is only
 #' intended to be used when location, scale, and shape are scalars.
 gev_t_function <- function(x, location, scale, shape) {
-  z <- (x - location) / sigma
+  z <- (x - location) / scale
   if (shape == 0) {
     exp(-z)
   } else {

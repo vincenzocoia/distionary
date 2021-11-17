@@ -2,23 +2,21 @@
 % Please edit documentation in R/dst_gev.R
 \name{dst_gev}
 \alias{dst_gev}
-\title{Generalized Extreme Values Distribution}
+\title{Generalized Extreme Value Distribution}
 \usage{
 dst_gev(location, scale, shape)
 }
 \arguments{
-\item{location}{real number}
+\item{location}{Location parameter; numeric.}
 
-\item{scale}{positive}
+\item{scale}{Scale parameter; positive numeric.}
 
-\item{shape}{real number}
+\item{shape}{Shape parameter; numeric.}
 }
 \description{
 Makes a distribution belonging to the family of
-gev distributions.
+Generalized Extreme Value (GEV) distributions.
 }
 \examples{
 dst_gev(0, 1, 1)
-
-
 }

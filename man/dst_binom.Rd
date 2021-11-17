@@ -4,12 +4,12 @@
 \alias{dst_binom}
 \title{Binomial Distribution}
 \usage{
-dst_binom(size, p)
+dst_binom(size, prob)
 }
 \arguments{
-\item{size}{number of trials}
+\item{size}{Number of trials.}
 
-\item{p}{success probability for each trial}
+\item{prob}{Success probability for each trial.}
 }
 \description{
 Makes a distribution belonging to the family of
@@ -17,5 +17,4 @@ binomial distributions.
 }
 \examples{
 dst_binom(10, 0.6)
-
 }

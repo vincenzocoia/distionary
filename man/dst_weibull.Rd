@@ -4,12 +4,12 @@
 \alias{dst_weibull}
 \title{Weibull Distribution}
 \usage{
-dst_weibull(lambda, gamma)
+dst_weibull(shape, scale)
 }
 \arguments{
-\item{lambda}{scale positive}
+\item{shape}{Shape parameter; positive.}
 
-\item{gamma}{shape positive}
+\item{scale}{Scale parameter; positive.}
 }
 \description{
 Makes a distribution belonging to the family of
