@@ -1,8 +1,8 @@
 ---
-title: "Creating a Distribution"
+title: "Specify a distribution"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Creating a Distribution}
+  %\VignetteIndexEntry{Specify a distribution}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,9 +15,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(distplyr)
-library(magrittr)
-library(tibble)
+library(distionary)
 ```
 
 You're able to make a wide range of probability distributions using distplyr's manipulation functions, but you'll need to start with more standard, basic distributions first. There are typically three use cases for building a basic distribution:

@@ -31,7 +31,6 @@ evi.parametric <- function(distribution) {
 
 #' @export
 range.parametric <- function(distribution, ...) {
-  ellipsis::check_dots_empty()
 	quantity_parametric(distribution, "range")
 }
 

@@ -42,7 +42,6 @@ kurtosis_exc.finite <- function(distribution) {
 #' @rdname range
 #' @export
 range.finite <- function(distribution, ...) {
-  ellipsis::check_dots_empty()
 	unlisted_probability_list <- distribution$probabilities$location
 	min_val <- min(unlisted_probability_list)
 	max_val <- max(unlisted_probability_list)
