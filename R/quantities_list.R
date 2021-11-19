@@ -109,11 +109,11 @@
     range = c(0, size)
   ),
   nbinom = rlang::exprs(
-    mean = prob * size / (1 - prob),
+    mean = (1 - prob) * size / prob,
     #median = FILL_THIS_IN,
-    variance = prob * size/((1- prob)^2),
-    skewness = (1 + prob)/sqrt(prob * size),
-    kurtosis_exc = 6/size + ((1-prob)^2)/(prob*size),
+    variance = (1-prob) * size/(prob^2),
+    #skewness = (1 + prob)/sqrt(prob * size),
+    #kurtosis_exc = 6/size + ((1-prob)^2)/(prob*size),
     range = c(0, 1), # need to double check
     #evi = FILL_THIS_IN not sure
   ),
