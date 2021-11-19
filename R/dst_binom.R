@@ -10,7 +10,7 @@
 #' dst_binom(10, 0.6)
 #'
 #' @export
-dst_binom <- function(size, p=prob){
+dst_binom <- function(size, prob){
   if(size < 0){
     stop("Size must be non-negative")
   }
