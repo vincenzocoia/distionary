@@ -112,9 +112,9 @@
     mean = (1 - prob) * size / prob,
     #median = FILL_THIS_IN,
     variance = (1-prob) * size/(prob^2),
-    #skewness = (1 + prob)/sqrt(prob * size),
-    #kurtosis_exc = 6/size + ((1-prob)^2)/(prob*size),
-    range = c(0, 1), # need to double check
+    skewness = (2 - prob) / sqrt((1 - prob) * size),
+    kurtosis_exc = (prob^2 - 6*prob + 6)/(size * (1 - prob)),
+    range = c(0, 1) # need to double check
     #evi = FILL_THIS_IN not sure
   ),
   geom = rlang::exprs(
