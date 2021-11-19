@@ -137,7 +137,7 @@
   ),
   weibull = rlang::exprs(
     mean = scale*gamma(1 + 1/shape),
-    median = scale*(log10(2)^(1/shape)),
+    median = scale*((log10(2))^(1/shape)),
     variance = scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2),
     skewness = (gamma(1 + 3/shape)*(scale^3) - 3*scale*gamma(1 + 1/shape)*(sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^2)  - (scale*gamma(1 + 1/shape))^3)/sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^3,
     kurtosis_exc = ((scale^4) * gamma(1 + 4/shape) - 4*((gamma(1 + 3/shape)*(scale^3) - 3*scale*gamma(1 + 1/shape)*(sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^2)  - (scale*gamma(1 + 1/shape))^3)/sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^3)*(sigma^3)*(scale*gamma(1 + 1/shape)) - 6*((scale*gamma(1 + 1/shape))^2)*(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2)) - (scale*gamma(1 + 1/shape))^4)/(sqrt(scale^2 * (gamma(1 + 2/shape) - (gamma(1 + 1/shape))^2))^4) - 3,
