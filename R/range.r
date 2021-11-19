@@ -19,12 +19,5 @@
 #' @rdname range
 #' @export
 range.dst <- function(distribution, ...) {
-  ellipsis::check_dots_empty()
-  # ellipsis <- rlang::list2(...)
-  # n <- length(ellipsis)
-  # if (n > 1) {
-    # stop("Can only find the range of one distribution; received ", n)
-  # }
-  # eval_quantile(ellipsis[[1L]], at = 0:1)
   eval_quantile(distribution, at = 0:1)
 }
