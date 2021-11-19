@@ -118,7 +118,7 @@
     #evi = FILL_THIS_IN not sure
   ),
   geom = rlang::exprs(
-    mean = 1/prob,
+    mean = (1 - prob)/prob,
     #median = ifelse((-1)/log2(1 - p)%%1 != 0, (-1)/log2(1 - p), 'No unique integer'), # not sure
     variance = (1 - prob)/prob^2,
     skewness = (2 - prob)/sqrt(1 - prob),
