@@ -12,11 +12,11 @@
 #'
 #'@export
 dst_nbinom <- function(size, prob){
+  if(size < 0){
+    stop('size must be positive')
+  }
   if(prob < 0 | prob > 1){
     stop('prob must be within 0 and 1')
-  }
-  if(size <= 0){
-    stop('size must be positive')
   }
   dst_parametric("nbinom",
                  size = size,
