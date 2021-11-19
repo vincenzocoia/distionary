@@ -20,7 +20,7 @@
 #' @export
 dst_parametric <- function(
 	.name, ..., .variable = c("unknown", "continuous", "discrete", "mixed")) {
-  if(!(.name %in% list('t', 'f', 'exp', 'gpd', 'gev', 'unif',
+  if(!(.name %in% list('t', 'f', 'exp', 'gpd', 'gev', 'unif', 'beta',
                          'pois', 'norm', 'geom', 'lnorm', 'hper',
                          'gamma', 'chisq', 'nbinom', 'cauchy', 'weibull'))){
     stop('This distribution is not available')
