@@ -43,6 +43,9 @@ test_that("quantities align with numeric computations.", {
     dst_gpd(0, 1, -1),
     dst_exp(1),
     dst_exp(2)
+    # dst_weibull(1, 1),
+    # dst_weibull(1.1, 2.1),
+    # dst_weibull(0.85, 3.55)
     # dst_f(3, 1),
     # dst_f(4, 1),
     # dst_f(6, 1),
