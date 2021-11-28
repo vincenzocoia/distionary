@@ -109,19 +109,19 @@
     range = c(0, size)
   ),
   nbinom = rlang::exprs(
-    mean = prob * size / (1 - prob),
+    mean = (1 - prob) * size / prob,
     #median = FILL_THIS_IN,
-    variance = prob * size / ((1 - prob)^2),
-    skewness = (1 + prob) / sqrt(prob * size),
+    variance = (1-prob) * size/(prob^2),
+    skewness = (2 - prob) / sqrt((1 - prob) * size),
     kurtosis_exc = 6 / size + ((1 - prob)^2) / (prob * size),
     range = c(0, 1) # need to double check
   ),
   geom = rlang::exprs(
-    mean = 1 / prob,
+    mean = (1 - prob)/prob,
     #median = ifelse((-1)/log2(1 - p)%%1 != 0, (-1)/log2(1 - p), 'No unique integer'), # not sure
-    variance = (1 - prob) / prob^2,
-    skewness = (2 - prob) / sqrt(1 - prob),
-    kurtosis_exc = 6 + prob^2 / (1 - prob),
+    variance = (1 - prob)/prob^2,
+    skewness = ifelse(prob < 1, (1 + prob) / sqrt(prob), NaN),
+    kurtosis_exc = ifelse(prob < 1, 6 + prob^2 / (1 - prob), NaN),
     range = c(0, size)
   ),
   exp = rlang::exprs(
