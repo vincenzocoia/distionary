@@ -167,7 +167,7 @@
   ),
   chisq = rlang::exprs(
       mean = df,
-      median = df * (1 - 2 / 9 * df)^3,
+      # median = df * (1 - 2 / 9 * df)^3,
       variance = 2 * df,
       skewness = sqrt(8 / df),
       kurtosis_exc = 12 / df,
