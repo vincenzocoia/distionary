@@ -120,7 +120,7 @@
     mean = (1 - prob)/prob,
     #median = ifelse((-1)/log2(1 - p)%%1 != 0, (-1)/log2(1 - p), 'No unique integer'), # not sure
     variance = (1 - prob)/prob^2,
-    skewness = ifelse(prob < 1, (1 + prob) / sqrt(prob), NaN),
+    skewness = ifelse(prob < 1, (2 - prob) / sqrt(1 - prob), NaN),
     kurtosis_exc = ifelse(prob < 1, 6 + prob^2 / (1 - prob), NaN),
     range = c(0, size)
   ),
