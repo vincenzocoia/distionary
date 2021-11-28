@@ -135,7 +135,7 @@
   ),
   weibull = rlang::exprs(
     mean = scale * gamma(1 + 1 / shape),
-    median = scale * (log10(2)^(1 / shape)),
+    median = scale * (log(2))^(1/shape),
     variance = scale^2 * (gamma(1 + 2 / shape) - gamma(1 + 1 / shape)^2),
     skewness = {
       g1 <- gamma(1 + 1 / shape)
