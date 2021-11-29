@@ -151,8 +151,11 @@
       g2 <- gamma(1 + 2 / shape)
       g3 <- gamma(1 + 3 / shape)
       g4 <- gamma(1 + 4 / shape)
-      (-6 * g1^4 + 12 * g1^2 * g2 - 3 * g2^2 - 4 * g1 * g3 + g4) /
-        (g1 - g2^2)^2
+      mu <- scale * g1
+      var <- scale^2 * (g2 - g1^2)
+      sigma <- sqrt(var)
+      sk <- (g3 * scale^3 - 3 * mu * var - mu^3) / sigma^3
+      ((gamma(1+4/1) - 4*sk*(var^3)*mu - 6*(mu^2)*(var^2) - mu^4)/(var^4) - 3)
     },
     range = c(0, Inf)
     #evi = FILL_THIS_IN
