@@ -32,6 +32,8 @@
 </script>
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -44,18 +46,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">distionary</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../reference/index.html">Reference</a>
 </li>
@@ -77,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/vincenzocoia/distionary">
+  <a href="https://github.com/vincenzocoia/distionary" class="external-link">
     <span class="fa fa-github"></span>
      
   </a>
@@ -106,7 +102,7 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">distionary</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">distionary</span><span class="op">)</span></code></pre></div>
 <p>One purpose of <code>distplyr</code> is to handle the menial distribution-related calculations for you. Just specify a distribution once, and there is no need to manage its components anymore.</p>
 <p><strong>Example</strong>: want to compute the variance of a Uniform(-1, 1) distribution, get the 0.25- and 0.75-quantiles, and generate a sample of size 10?</p>
 <p>Without <code>distplyr</code>:</p>
@@ -117,25 +113,25 @@
 <span class="op">(</span><span class="va">b</span> <span class="op">-</span> <span class="va">a</span><span class="op">)</span> <span class="op">^</span> <span class="fl">2</span> <span class="op">/</span> <span class="fl">12</span>
 <span class="co">#&gt; [1] 0.3333333</span>
 <span class="co"># Get quantiles:</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">qunif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span>, min <span class="op">=</span> <span class="va">a</span>, max <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">qunif</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span>, min <span class="op">=</span> <span class="va">a</span>, max <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
 <span class="co">#&gt; [1] -0.5  0.5</span>
 <span class="co"># Get sample of size 10:</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">10</span>, min <span class="op">=</span> <span class="va">a</span>, max <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  0.55805782  0.40075767  0.32523332  0.76070259  0.37314875 -0.98373058</span>
-<span class="co">#&gt;  [7]  0.58922398 -0.02826084  0.13922316  0.46609128</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span>, min <span class="op">=</span> <span class="va">a</span>, max <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
+<span class="co">#&gt;  [1] -0.1538639  0.3346403 -0.2838152 -0.2339069  0.8430551 -0.8473296</span>
+<span class="co">#&gt;  [7] -0.7947335  0.4504305 -0.1161178 -0.5214182</span></code></pre></div>
 <p>With <code>distplyr</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dst_unif.html">dst_unif</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="../reference/kurtosis_raw.html">variance</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>
+<span class="fu"><a href="../reference/moments.html">variance</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.3333333</span>
-<span class="fu"><a href="../reference/eval_quantile.html">eval_quantile</a></span><span class="op">(</span><span class="va">d</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="../reference/quantile.html">eval_quantile</a></span><span class="op">(</span><span class="va">d</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] -0.5  0.5</span>
 <span class="fu"><a href="../reference/realise.html">realise</a></span><span class="op">(</span><span class="va">d</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="co">#&gt;  [1] -0.43130701 -0.79821428 -0.91459363 -0.33482062  0.42041845  0.85663554</span>
-<span class="co">#&gt;  [7] -0.33117829  0.38844627  0.86477297 -0.05379356</span></code></pre></div>
-<div id="functional-representations-of-a-distribution" class="section level2">
-<h2 class="hasAnchor">
-<a href="#functional-representations-of-a-distribution" class="anchor"></a>Functional Representations of a Distribution</h2>
+<span class="co">#&gt;  [1]  0.8163768 -0.6438010 -0.2924522 -0.7618683 -0.9249474  0.5570296</span>
+<span class="co">#&gt;  [7]  0.7896270  0.8396167  0.5365115 -0.6454680</span></code></pre></div>
+<div class="section level2">
+<h2 id="functional-representations-of-a-distribution">Functional Representations of a Distribution<a class="anchor" aria-label="anchor" href="#functional-representations-of-a-distribution"></a>
+</h2>
 <p>A distribution can be represented by different functions, such as a density function, a cumulative distribution function, and others. In <code>distplyr</code>, you can:</p>
 <ul>
 <li>evaluate the function directly by calling <code>eval_*</code>;</li>
@@ -157,43 +153,43 @@
 <tr class="odd">
 <td>Cumulative Distribution Function</td>
 <td>
-<code><a href="../reference/eval_cdf.html">eval_cdf()</a></code>, <code>get_cdf()</code>, <code><a href="../reference/eval_cdf.html">enframe_cdf()</a></code>
+<code><a href="../reference/cdf.html">eval_cdf()</a></code>, <code>get_cdf()</code>, <code><a href="../reference/cdf.html">enframe_cdf()</a></code>
 </td>
 </tr>
 <tr class="even">
 <td>Survival Function</td>
 <td>
-<code><a href="../reference/eval_survival.html">eval_survival()</a></code>, <code>get_survival()</code>, <code><a href="../reference/eval_survival.html">enframe_survival()</a></code>
+<code><a href="../reference/survival.html">eval_survival()</a></code>, <code>get_survival()</code>, <code><a href="../reference/survival.html">enframe_survival()</a></code>
 </td>
 </tr>
 <tr class="odd">
 <td>Quantile Function</td>
 <td>
-<code><a href="../reference/eval_quantile.html">eval_quantile()</a></code>, <code>get_quantile()</code>, <code><a href="../reference/eval_quantile.html">enframe_quantile()</a></code>
+<code><a href="../reference/quantile.html">eval_quantile()</a></code>, <code>get_quantile()</code>, <code><a href="../reference/quantile.html">enframe_quantile()</a></code>
 </td>
 </tr>
 <tr class="even">
 <td>Hazard Function</td>
 <td>
-<code><a href="../reference/eval_hazard.html">eval_hazard()</a></code>, <code>get_hazard()</code>, <code><a href="../reference/eval_hazard.html">enframe_hazard()</a></code>
+<code><a href="../reference/hazard.html">eval_hazard()</a></code>, <code>get_hazard()</code>, <code><a href="../reference/hazard.html">enframe_hazard()</a></code>
 </td>
 </tr>
 <tr class="odd">
 <td>Cumulative Hazard Function</td>
 <td>
-<code><a href="../reference/eval_chf.html">eval_chf()</a></code>, <code>get_chf()</code>, <code><a href="../reference/eval_chf.html">enframe_chf()</a></code>
+<code><a href="../reference/chf.html">eval_chf()</a></code>, <code>get_chf()</code>, <code><a href="../reference/chf.html">enframe_chf()</a></code>
 </td>
 </tr>
 <tr class="even">
 <td>Probability density function</td>
 <td>
-<code><a href="../reference/eval_density.html">eval_density()</a></code>, <code>get_density()</code>, <code><a href="../reference/eval_density.html">enframe_density()</a></code>
+<code><a href="../reference/density.html">eval_density()</a></code>, <code>get_density()</code>, <code><a href="../reference/density.html">enframe_density()</a></code>
 </td>
 </tr>
 <tr class="odd">
 <td>Probability mass function</td>
 <td>
-<code><a href="../reference/eval_pmf.html">eval_pmf()</a></code>, <code>get_pmf()</code>, <code><a href="../reference/eval_pmf.html">enframe_pmf()</a></code>
+<code><a href="../reference/pmf.html">eval_pmf()</a></code>, <code>get_pmf()</code>, <code><a href="../reference/pmf.html">enframe_pmf()</a></code>
 </td>
 </tr>
 </tbody>
@@ -201,24 +197,24 @@
 <p>These functions all take a distribution object as their first argument, and <code>eval_*</code> and <code>enframe_*</code> have a second argument named <code>at</code> indicating where to evaluate the function. The <code>at</code> argument is vectorized.</p>
 <p>Here is an example of evaluating the hazard function and the random sample generator of a Uniform(-1,1) distribution, and enframing the density:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/eval_hazard.html">eval_hazard</a></span><span class="op">(</span><span class="va">d</span>, at <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/hazard.html">eval_hazard</a></span><span class="op">(</span><span class="va">d</span>, at <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
 <span class="co">#&gt;  [1]   1 Inf NaN NaN NaN NaN NaN NaN NaN NaN NaN</span>
-<span class="fu"><a href="../reference/eval_density.html">enframe_density</a></span><span class="op">(</span><span class="va">d</span>, at <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 11 × 2</span>
+<span class="fu"><a href="../reference/density.html">enframe_density</a></span><span class="op">(</span><span class="va">d</span>, at <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 2</span></span>
 <span class="co">#&gt;     .arg density</span>
-<span class="co">#&gt;    &lt;int&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     0     0.5</span>
-<span class="co">#&gt;  2     1     0.5</span>
-<span class="co">#&gt;  3     2     0  </span>
-<span class="co">#&gt;  4     3     0  </span>
-<span class="co">#&gt;  5     4     0  </span>
-<span class="co">#&gt;  6     5     0  </span>
-<span class="co">#&gt;  7     6     0  </span>
-<span class="co">#&gt;  8     7     0  </span>
-<span class="co">#&gt;  9     8     0  </span>
-<span class="co">#&gt; 10     9     0  </span>
-<span class="co">#&gt; 11    10     0</span>
-<span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     0     0.5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     1     0.5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     2     0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     3     0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     4     0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     5     0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     6     0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     7     0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     8     0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     9     0  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">11</span>    10     0</span>
+<span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <p><code>enframe()</code> works particularly well with tibbles and <code>tidyr::unnest()</code>:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># half_marathon &lt;- tribble(</span>
@@ -231,9 +227,9 @@
 <span class="co">#   mutate(quartiles = map(race_time_min, enframe_quantile, at = 1:3 / 4)) %&gt;% </span>
 <span class="co">#   unnest(quartiles)</span></code></pre></div>
 </div>
-<div id="drawing-a-random-sample" class="section level2">
-<h2 class="hasAnchor">
-<a href="#drawing-a-random-sample" class="anchor"></a>Drawing a random sample</h2>
+<div class="section level2">
+<h2 id="drawing-a-random-sample">Drawing a random sample<a class="anchor" aria-label="anchor" href="#drawing-a-random-sample"></a>
+</h2>
 <p>To draw a random sample from a distribution, use the <code><a href="../reference/realise.html">realise()</a></code> or <code><a href="../reference/realise.html">realize()</a></code> function:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/realise.html">realise</a></span><span class="op">(</span><span class="va">d</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
@@ -248,9 +244,9 @@
 <span class="co">#   mutate(actual_time_min = map_dbl(race_time_min, realise))</span></code></pre></div>
 <p>Perhaps surprisingly, distplyr does not consider <code><a href="../reference/realise.html">realise()</a></code> as a functional representation of a distribution, even though random sampling falls into the same family as the <code>stats::p*/d*/q*/r*</code> functions. This is because it’s impossible to perfectly describe a distribution based on a sample.</p>
 </div>
-<div id="properties-of-distributions" class="section level2">
-<h2 class="hasAnchor">
-<a href="#properties-of-distributions" class="anchor"></a>Properties of Distributions</h2>
+<div class="section level2">
+<h2 id="properties-of-distributions">Properties of Distributions<a class="anchor" aria-label="anchor" href="#properties-of-distributions"></a>
+</h2>
 <p>Distributions have various numeric properties. Common examples are the mean and variance, but there are many others as well.</p>
 <p>Below is a table of the properties incorporated in <code>distplyr</code>:</p>
 <table class="table">
@@ -262,31 +258,31 @@
 <tbody>
 <tr class="odd">
 <td>Mean</td>
-<td><code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code></td>
+<td><code><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean()</a></code></td>
 </tr>
 <tr class="even">
 <td>Median</td>
-<td><code><a href="https://rdrr.io/r/stats/median.html">median()</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/median.html" class="external-link">median()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Variance</td>
-<td><code><a href="../reference/kurtosis_raw.html">variance()</a></code></td>
+<td><code><a href="../reference/moments.html">variance()</a></code></td>
 </tr>
 <tr class="even">
 <td>Standard Deviation</td>
-<td><code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code></td>
+<td><code><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Skewness</td>
-<td><code><a href="../reference/kurtosis_raw.html">skewness()</a></code></td>
+<td><code><a href="../reference/moments.html">skewness()</a></code></td>
 </tr>
 <tr class="even">
 <td>Excess Kurtosis</td>
-<td><code><a href="../reference/kurtosis_raw.html">kurtosis_exc()</a></code></td>
+<td><code><a href="../reference/moments.html">kurtosis_exc()</a></code></td>
 </tr>
 <tr class="odd">
 <td>Kurtosis</td>
-<td><code><a href="../reference/kurtosis_raw.html">kurtosis_raw()</a></code></td>
+<td><code><a href="../reference/moments.html">kurtosis_raw()</a></code></td>
 </tr>
 <tr class="even">
 <td>Extreme Value (Tail) Index</td>
@@ -296,9 +292,9 @@
 </table>
 <p>Here are some properties of our original Uniform(-1, 1) distribution:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0</span>
-<span class="fu"><a href="../reference/kurtosis_raw.html">stdev</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>
+<span class="fu"><a href="../reference/moments.html">stdev</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>
 <span class="co">#&gt; [1] 0.5773503</span>
 <span class="fu"><a href="../reference/evi.html">evi</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span>
 <span class="co">#&gt; [1] -1</span></code></pre></div>
@@ -316,11 +312,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://vincenzocoia.com">Vincenzo Coia</a>, Amogh Joshi, Shuyi Tan, Zhipeng Zhu.</p>
+  <p></p>
+<p>Developed by <a href="http://vincenzocoia.com" class="external-link">Vincenzo Coia</a>, Amogh Joshi, Shuyi Tan, Zhipeng Zhu.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
 </div>
 
       </footer>
@@ -328,6 +326,8 @@
 
   
 
+
+  
 
   </body>
 </html>
