@@ -5,7 +5,8 @@
 #' skewness, and kurtosis.
 #'
 #' @param x Distribution to evaluate.
-#' @param ... Not used.
+#' @param ... When calculating the mean via integration of the quantile
+#' function, arguments passed to `stats::integrate()`.
 #'
 #' @details If there is no method associated with a subclass of
 #' \code{x}, then moments are calculated using
@@ -23,8 +24,7 @@
 #' @rdname moments
 #' @export
 mean.dst <- function(x, ...) {
-  ellipsis::check_dots_empty()
   qf <- representation_as_function(x, "quantile")
-  int <- stats::integrate(qf, lower = 0, upper = 1)
+  int <- stats::integrate(qf, lower = 0, upper = 1, ...)
   int$value
 }
