@@ -9,13 +9,20 @@
 #' Should also be the name of a function.
 #' @param tolerance The tolerance level in the `expect_equal()` call
 #' when comparing the two quantities.
+#' @param verbose Logical; print the distribution being tested to screen?
 #' @return Invisible, if the name doesn't exist in the `.quantity` list
 #' for that distribution, or the output of an `expect_` function from
 #' the testthat package.
 #' @note If a quantity is infinite, the default computation is expected
 #' to be an error (such as through a divergent integral), and so
 #' `expect_error()` is used in that situation.
-check_quantity <- function(distribution, name, tolerance = 1e-3) {
+check_quantity <- function(distribution, name, tolerance = 1e-3,
+                           verbose = FALSE) {
+  if (verbose) {
+    cat("Testing function: ", name, "\n")
+    cat("Distribution: ", distribution$name, "\n")
+    cat("Parameters: ", paste(parameters(distribution), ","), "\n\n")
+  }
   name_exists <- !is.null(.quantities[[distribution$name]][[name]])
   if (name_exists) {
     name.dst <- paste0(name, ".dst")
@@ -23,7 +30,8 @@ check_quantity <- function(distribution, name, tolerance = 1e-3) {
     if (is.infinite(quantity_from_list)) {
       expect_error(rlang::exec(name.dst, distribution))
     } else {
-      quantity_default <- rlang::exec(name.dst, distribution)
+      quantity_default <- rlang::exec(name.dst, distribution,
+                                      subdivisions = 2000)
       expect_equal(quantity_from_list, quantity_default, tolerance = tolerance)
     }
   }
@@ -85,7 +93,7 @@ test_that("quantities align with numeric computations.", {
     check_quantity(d, "mean")
     check_quantity(d, "variance")
     check_quantity(d, "skewness")
-    check_quantity(d, "kurtosis_exc")
+    check_quantity(d, "kurtosis_exc", verbose = TRUE)
     check_quantity(d, "median")
   }
 })

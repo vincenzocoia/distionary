@@ -23,7 +23,6 @@
 #' @rdname moments
 #' @export
 mean.dst <- function(x, ...) {
-  ellipsis::check_dots_empty()
   qf <- representation_as_function(x, "quantile")
   int <- stats::integrate(qf, lower = 0, upper = 1, ...)
   int$value
