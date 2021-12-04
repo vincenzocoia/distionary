@@ -27,7 +27,7 @@ check_quantity <- function(distribution, name, tolerance = 1e-3,
   if (name_exists) {
     name.dst <- paste0(name, ".dst")
     quantity_from_list <- rlang::exec(name, distribution)
-    if (is.infinite(quantity_from_list)) {
+    if (is.infinite(quantity_from_list) || is.na(quantity_from_list)) {
       expect_error(rlang::exec(name.dst, distribution))
     } else {
       quantity_default <- rlang::exec(name.dst, distribution,
@@ -73,11 +73,11 @@ test_that("quantities align with numeric computations.", {
     # dst_chisq(5),
     # dst_chisq(1),
     # dst_cauchy(0, 1) # not fixed yet
-    dst_weibull(1, 1),
-    dst_weibull(2, 2)
+    # dst_weibull(1, 1),
+    # dst_weibull(2, 2)
     # dst_weibull(1.1, 2.1)
     #dst_weibull(0.85, 3.55)
-    # dst_f(3, 1),
+     dst_f(3, 1)
     # dst_f(4, 1),
     # dst_f(6, 1),
     # dst_f(8, 1),
