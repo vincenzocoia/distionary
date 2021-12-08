@@ -1,13 +1,11 @@
 #' @export
 eval_cdf.gev <- function(distribution, at) {
   r <- range(distribution)
-  left_at <- at[at < r]
-  right_at <- at[at > r]
   with(parameters(distribution), {
     t <- gev_t_function(at, location = location, scale = scale, shape = shape)
     res <- exp(-t)
-    res[left_at] <- 0
-    res[right_at] <- 1
+    res[at < r[1L]] <- 0
+    res[at > r[2L]] <- 1
     res
   })
 }
@@ -29,13 +27,11 @@ eval_quantile.gev <- function(distribution, at) {
 #' @export
 eval_density.gev <- function(distribution, at, strict = TRUE) {
   r <- range(distribution)
-  left_at <- at[at < r]
-  right_at <- at[at > r]
   with(parameters(distribution), {
     t <- gev_t_function(at, location = location, scale = scale, shape = shape)
     res <- t^(shape + 1) / scale * exp(-t)
-    res[left_at] <- 0
-    res[right_at] <- 0
+    res[at < r[1L]] <- 0
+    res[at > r[2L]] <- 0
     res
   })
 }
