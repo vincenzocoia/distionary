@@ -53,7 +53,7 @@ test_that("quantities align with numeric computations.", {
     # dst_binom(10, 0.6),
     # dst_binom(8, 0.05),
     # dst_binom(2, 0.89),
-    # dst_nbinom(6, 0.05), # Error: the integral is probably divergent
+     dst_nbinom(6, 0.05) # Error: the integral is probably divergent
     # dst_nbinom(3, 0.87),
     # dst_nbinom(1.5, 0.5),
     # dst_gpd(0, 1, 1 / 4 - 0.01),
@@ -76,8 +76,8 @@ test_that("quantities align with numeric computations.", {
     # dst_weibull(1, 1),
     # dst_weibull(2, 2)
     # dst_weibull(1.1, 2.1)
-    #dst_weibull(0.85, 3.55)
-     dst_f(3, 1)
+    # dst_weibull(0.85, 3.55)
+    # dst_f(3, 1)
     # dst_f(4, 1),
     # dst_f(6, 1),
     # dst_f(8, 1),
@@ -93,8 +93,8 @@ test_that("quantities align with numeric computations.", {
     check_quantity(d, "mean")
     check_quantity(d, "variance")
     check_quantity(d, "skewness")
-    check_quantity(d, "kurtosis_exc", verbose = TRUE)
-    check_quantity(d, "median")
+    #check_quantity(d, "kurtosis_exc", verbose = TRUE)
+    #check_quantity(d, "median")
   }
 })
 
