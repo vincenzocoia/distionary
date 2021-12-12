@@ -4,18 +4,18 @@
 \alias{eval_quantile_from_cdf}
 \title{Evaluate Quantiles using a CDF}
 \usage{
-eval_quantile_from_cdf(cdf, discon, at, tol, maxiter)
+eval_quantile_from_cdf(distribution, at, tol, maxiter)
 }
 \arguments{
-\item{cdf}{Function representing the cdf.}
-
-\item{discon}{A data frame of discontinuities, as in the
-output of \code{discontinuities()}.}
-
 \item{at}{A vector of values for which to evaluate the
 quantile function.}
 
 \item{tol, maxiter}{Tolerance and maximum number of iterations}
+
+\item{cdf}{Function representing the cdf.}
+
+\item{discon}{A data frame of discontinuities, as in the
+output of \code{discontinuities()}.}
 }
 \description{
 Intended for internal use only.

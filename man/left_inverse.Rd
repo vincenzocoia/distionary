@@ -4,14 +4,9 @@
 \alias{left_inverse}
 \title{Algorithm to Compute Left Inverse}
 \usage{
-left_inverse(f, at, low, high, tol, maxiter)
+left_inverse(distribution, p, low, high, tol, maxiter)
 }
 \arguments{
-\item{f}{A function to compute the left inverse of.}
-
-\item{at}{Value for which to calculate the left inverse.
-Not vectorized.}
-
 \item{low, high}{Single numeric values forming a range
 within which to search for the solution.}
 
@@ -20,12 +15,17 @@ solution will be within plus or minus half this value.}
 
 \item{maxiter}{Number of iterations to attempt before
 quitting, if the tolerance has not been reached. by then.}
+
+\item{f}{A function to compute the left inverse of.}
+
+\item{y}{Single value for which to calculate the left inverse.
+Not vectorized.}
 }
 \description{
 Calculates the smallest value for which a function
 \code{f} evaluates to be greater than or equal to
-\code{at} -- that is, the left inverse of \code{f}
-at \code{at}. Intended for internal use only.
+\code{y} -- that is, the left inverse of \code{f}
+at \code{y}. Intended for internal use only.
 }
 \details{
 This algorithm works by progressively
