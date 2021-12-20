@@ -7,17 +7,10 @@
 directional_inverse(distribution, p, low, high, tol, maxiter, direction)
 }
 \arguments{
-\item{distribution}{A distribution with a specified cdf.}
-
 \item{p}{Single value for which to calculate the left inverse.}
 
 \item{low, high}{Single numeric values forming a range
 within which to search for the solution.}
-
-\item{tol}{Maximum tolerance for the solution.}
-
-\item{maxiter}{Number of iterations to attempt before
-quitting, if the tolerance has not been reached. by then.}
 
 \item{direction}{One of \code{"left"} for calculating left-inverse, or
 \code{"right"} for calculating right-inverse.}

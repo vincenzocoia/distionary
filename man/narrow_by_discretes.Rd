@@ -4,32 +4,14 @@
 \alias{narrow_by_discretes}
 \title{Narrow a range of possible values by a discrete}
 \usage{
-narrow_by_discretes(
-  distribution,
-  p,
-  low,
-  high,
-  discrete,
-  strict_inequality = c(TRUE, FALSE)
-)
+narrow_by_discretes(distribution, p, low, high, discrete, direction)
 }
 \arguments{
-\item{distribution}{A distribution with access to a cdf.}
-
 \item{p}{Value of the cdf to calculate inverse at.}
-
-\item{low, high}{Numeric values indicating the lower and upper
-values containing the solution.}
 
 \item{discrete}{Numeric value indicating a discrete point to possibly
 narrow the range by. Could be \code{NA}; could have length 0; could be
 outside of the range \code{c(low, high)}.}
-
-\item{strict_inequality}{Logical vector of length two.
-Should the lower bound evaluate to be strictly less than \code{p}?
-Should the upper bound evaluate to be strictly greater than \code{p}?
-\code{c(TRUE, FALSE)} is the default, useful for calculating left-inverses;
-\code{c(FALSE, TRUE)} is useful for calculating right-inverses.}
 }
 \description{
 When finding the inverse of the cdf at \code{p}, and with the solution

@@ -7,15 +7,11 @@
 eval_quantile_from_cdf(distribution, at, tol, maxiter)
 }
 \arguments{
-\item{at}{A vector of values for which to evaluate the
-quantile function.}
+\item{distribution}{A distribution having access to a cdf.}
+
+\item{at}{A vector of values for which to evaluate the quantile function.}
 
 \item{tol, maxiter}{Tolerance and maximum number of iterations}
-
-\item{cdf}{Function representing the cdf.}
-
-\item{discon}{A data frame of discontinuities, as in the
-output of \code{discontinuities()}.}
 }
 \description{
 Intended for internal use only.

@@ -4,18 +4,15 @@
 \alias{encapsulate_p}
 \title{Find a range of possible outcomes}
 \usage{
-encapsulate_p(distribution, p, strict_inequality = c(TRUE, FALSE))
+encapsulate_p(distribution, p, direction)
 }
 \arguments{
-\item{distribution}{Distribution.}
+\item{distribution}{A distribution having access to a cdf.}
 
 \item{p}{Vector of values between 0 and 1 (inclusive).}
 
-\item{strict_inequality}{Logical vector of length two.
-Should the lower bound evaluate to be strictly less than \code{p}?
-Should the upper bound evaluate to be strictly greater than \code{p}?
-\code{c(TRUE, FALSE)} is the default, useful for calculating left-inverses;
-\code{c(FALSE, TRUE)} is useful for calculating right-inverses.}
+\item{direction}{One of \code{"left"} for calculating left-inverse, or
+\code{"right"} for calculating right-inverse.}
 }
 \description{
 Find a range of possible outcomes where the cdf evaluates to values
