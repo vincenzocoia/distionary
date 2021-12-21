@@ -163,7 +163,8 @@ directional_inverse <- function(distribution, p, low, high, tol, maxiter,
       )
     }
     low_high <- narrow_by_discretes(
-      distribution, p = p, low = low, high = high, discrete = discrete
+      distribution, p = p, low = low, high = high, discrete = discrete,
+      direction = direction
     )
     low <- low_high[1L]
     high <- low_high[2L]
@@ -214,10 +215,10 @@ narrow_by_discretes <- function(distribution, p, low, high, discrete,
     stop("`direction` must be one of 'left' or 'right'. Received '",
          direction, "'.")
   }
-  if (lt(cdf_lower, p)) {
+  if (lower_lt(cdf_lower, p)) {
     low <- discrete
   }
-  if (gt(cdf_upper, p)) {
+  if (upper_gt(cdf_upper, p)) {
     high <- discrete
   }
   c(low, high)
