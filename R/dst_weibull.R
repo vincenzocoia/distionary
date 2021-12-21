@@ -18,6 +18,7 @@ dst_weibull <- function(shape, scale) {
     stop('shape parameter must be positive.')
   }
   dst_parametric(
-    "weibull", shape = shape, scale = scale, .variable = "continuous"
+    "weibull", shape = shape, scale = scale,
+    .variable = "continuous", .env = "package:stats"
   )
 }

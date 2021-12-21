@@ -16,8 +16,7 @@ dst_f <- function(df1, df2){
   if(df2 <= 0){
     stop('df2 must be positive')
   }
-  dst_parametric("f",
-                 df1 = df1,
-                 df2 = df2,
-                 .variable = "continuous")
+  dst_parametric(
+    "f", df1 = df1, df2 = df2, .variable = "continuous", .env = "package:stats"
+  )
 }

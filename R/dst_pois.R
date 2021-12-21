@@ -12,5 +12,7 @@ dst_pois <- function(lambda) {
 	} else if (lambda == 0) {
 		return(dst_degenerate(lambda))
 	}
-	dst_parametric("pois", lambda = lambda, .variable = "discrete")
+	dst_parametric(
+	  "pois", lambda = lambda, .variable = "discrete", .env = "package:stats"
+	)
 }

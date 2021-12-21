@@ -11,7 +11,10 @@
 #' @param .variable Type of random variable represented by the distribution.
 #' Warning: defaults to "unknown", where density, pmf, and hazard cannot be
 #' evaluated.
-#' @details The `r` function is not needed, but is used if available.
+#' @param .env Environment beginning the search path when looking for the
+#' representation, or the name of an environment (or any object that
+#' can be coerced to an environment with `as.environment()`.) Defaults to
+#' the calling environment.
 #' @examples
 #' d <- dst_parametric("norm", mean = 0, sd = 1, .variable = "continuous")
 #' eval_density(d, at = -3:3)
@@ -36,7 +39,7 @@ dst_parametric <- function(
 	params <- lapply(dots, rlang::eval_tidy)
 	names(params) <- names(dots)
 	res <- list(name = .name,
-	            env = parent.frame(),
+	            env = .env,
 	            parameters = params)
 	new_distribution(res, variable = v, class = c(.name, "parametric"))
 }
