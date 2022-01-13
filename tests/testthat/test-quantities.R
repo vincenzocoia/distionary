@@ -87,9 +87,9 @@ test_that("quantities align with numeric computations.", {
     # dst_t(3),
     # dst_t(4),
     # dst_t(4.2),
-
   )
   for (d in distributions) {
+    print(d$name)
     check_quantity(d, "mean")
     check_quantity(d, "variance")
     check_quantity(d, "skewness")

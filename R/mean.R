@@ -5,7 +5,8 @@
 #' skewness, and kurtosis.
 #'
 #' @param x Distribution to evaluate.
-#' @param ... Not used.
+#' @param ... When calculating the mean via integration of the quantile
+#' function, arguments passed to `stats::integrate()`.
 #'
 #' @details If there is no method associated with a subclass of
 #' \code{x}, then moments are calculated using

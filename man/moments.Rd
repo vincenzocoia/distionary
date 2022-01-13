@@ -33,7 +33,8 @@ variance(distribution)
 
 \item{x}{Distribution to calculate median from.}
 
-\item{...}{Not used.}
+\item{...}{When calculating the mean via integration of the quantile
+function, arguments passed to \code{stats::integrate()}.}
 }
 \value{
 A single numeric.
