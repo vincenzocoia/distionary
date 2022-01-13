@@ -109,19 +109,19 @@
     range = c(0, size)
   ),
   nbinom = rlang::exprs(
-    mean = prob * size / (1 - prob),
+    mean = (1 - prob) * size / prob,
     #median = FILL_THIS_IN,
-    variance = prob * size / ((1 - prob)^2),
-    skewness = (1 + prob) / sqrt(prob * size),
+    variance = (1-prob) * size/(prob^2),
+    skewness = (2 - prob) / sqrt((1 - prob) * size),
     kurtosis_exc = 6 / size + ((1 - prob)^2) / (prob * size),
     range = c(0, 1) # need to double check
   ),
   geom = rlang::exprs(
-    mean = 1 / prob,
+    mean = (1 - prob)/prob,
     #median = ifelse((-1)/log2(1 - p)%%1 != 0, (-1)/log2(1 - p), 'No unique integer'), # not sure
-    variance = (1 - prob) / prob^2,
-    skewness = (2 - prob) / sqrt(1 - prob),
-    kurtosis_exc = 6 + prob^2 / (1 - prob),
+    variance = (1 - prob)/prob^2,
+    skewness = ifelse(prob < 1, (2 - prob) / sqrt(1 - prob), NaN),
+    kurtosis_exc = ifelse(prob < 1, 6 + prob^2 / (1 - prob), NaN),
     range = c(0, size)
   ),
   exp = rlang::exprs(
@@ -135,7 +135,7 @@
   ),
   weibull = rlang::exprs(
     mean = scale * gamma(1 + 1 / shape),
-    median = scale * (log10(2)^(1 / shape)),
+    median = scale * (log(2))^(1/shape),
     variance = scale^2 * (gamma(1 + 2 / shape) - gamma(1 + 1 / shape)^2),
     skewness = {
       g1 <- gamma(1 + 1 / shape)
@@ -151,8 +151,11 @@
       g2 <- gamma(1 + 2 / shape)
       g3 <- gamma(1 + 3 / shape)
       g4 <- gamma(1 + 4 / shape)
-      (-6 * g1^4 + 12 * g1^2 * g2 - 3 * g2^2 - 4 * g1 * g3 + g4) /
-        (g1 - g2^2)^2
+      mu <- scale * g1
+      var <- scale^2 * (g2 - g1^2)
+      sigma <- sqrt(var)
+      sk <- (g3 * scale^3 - 3 * mu * var - mu^3) / sigma^3
+      ((gamma(1+4/1) - 4*sk*(var^3)*mu - 6*(mu^2)*(var^2) - mu^4)/(var^4) - 3)
     },
     range = c(0, Inf)
     #evi = FILL_THIS_IN
@@ -167,7 +170,7 @@
   ),
   chisq = rlang::exprs(
       mean = df,
-      median = df * (1 - 2 / 9 * df)^3,
+      # median = df * (1 - 2 / 9 * df)^3,
       variance = 2 * df,
       skewness = sqrt(8 / df),
       kurtosis_exc = 12 / df,

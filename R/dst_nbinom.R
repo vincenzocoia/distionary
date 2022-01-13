@@ -15,5 +15,8 @@ dst_nbinom <- function(size, prob) {
   if (size <= 0) {
     stop('size must be positive.')
   }
-  dst_parametric("nbinom", size = size, prob = prob, .variable = "discrete")
+  dst_parametric(
+    "nbinom", size = size, prob = prob,
+    .variable = "discrete", .env = "package:stats"
+  )
 }

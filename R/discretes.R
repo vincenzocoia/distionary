@@ -2,7 +2,9 @@
 #'
 #' `next_discrete()` and `prev_discrete()` find the `n` discrete values
 #' in a distribution next to a reference point. `num_discretes()` finds
-#' the number of discrete values within a range.
+#' the number of discrete values within a range. `has_infinite_discretes()`
+#' checks whether there are an infinite amount of discrete values between
+#' a range of values.
 #'
 #' @param distribution Distribution
 #' @param from,to Reference values.
@@ -18,6 +20,11 @@
 #' when asking for the integer that comes before infinity.
 #'
 #' For `num_discretes()`, a single non-negative integer, possibly infinite.
+#' Possibly also `NA_integer_` if there's not enough information to
+#' determine this.
+#'
+#' For `has_infinite_discretes()`, a single logical, possibly `NA` if
+#' there's not enough information to determine this.
 #' @examples
 #' next_discrete(dst_pois(1), from = 1.3)
 #' prev_discrete(dst_pois(1), from = 3, n = 10)
@@ -28,16 +35,37 @@ next_discrete <- function(distribution, from, n = 1L, include_from = FALSE) {
   UseMethod("next_discrete")
 }
 
+#' @export
+#' @inheritParams next_discrete
+next_discrete.dst <- function(distribution, from, n, include_from) {
+  numeric(0L)
+}
+
 #' @rdname discretes
 #' @export
 prev_discrete <- function(distribution, from, n = 1L, include_from = FALSE) {
   UseMethod("prev_discrete")
 }
 
+#' @export
+#' @inheritParams next_discrete
+prev_discrete.dst <- function(distribution, from, n, include_from) {
+  numeric(0L)
+}
+
 #' @rdname discretes
 #' @export
 num_discretes <- function(distribution, from, to, include_from, include_to) {
   UseMethod("num_discretes")
+}
+
+#' @export
+num_discretes.dst <- function(distribution, from, to,
+                              include_from, include_to) {
+  if (variable(distribution) == "continuous") {
+    return(0L)
+  }
+  NA_integer_
 }
 
 #' @rdname discretes
@@ -47,32 +75,11 @@ has_infinite_discretes <- function(distribution, from = -Inf, to = Inf) {
 }
 
 #' @export
-has_infinite_discretes.dst <- function(distribution, from = -Inf, to = Inf) {
+has_infinite_discretes.dst <- function(distribution, from, to) {
   if (variable(distribution) == "continuous") {
     return(FALSE)
   }
-  stop("Cannot determine whether this distribution has a finite number ",
-       "of discrete values between ", from, " and ", to, ".")
-}
-
-#' @export
-#' @inheritParams next_discrete
-next_discrete.dst <- function(distribution, from, n = 1L,
-                              include_from = FALSE) {
-  if (variable(distribution) == "continuous") {
-    return(numeric(0L))
-  }
-  stop("Cannot find the next discrete values for this distribution.")
-}
-
-#' @export
-#' @inheritParams next_discrete
-prev_discrete.dst <- function(distribution, from, n = 1L,
-                              include_from = FALSE) {
-  if (variable(distribution) == "continuous") {
-    return(numeric(0L))
-  }
-  stop("Cannot find the previous discrete values for this distribution.")
+  NA
 }
 
 

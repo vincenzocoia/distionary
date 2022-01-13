@@ -13,7 +13,7 @@
 realise <- function(distribution, n = 1) UseMethod("realise")
 
 #' @export
-realise.dst <- function(distribution, n = 1) {
+realise.dst <- function(distribution, n) {
   u <- stats::runif(n)
   return(eval_quantile(distribution, at = u))
 }

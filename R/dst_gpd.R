@@ -11,6 +11,8 @@ dst_gpd <- function(location, scale, shape) {
 	if (scale <= 0) {
 		stop("'scale' parameter must be positive.")
 	}
-  dst_parametric("gpd", location = location, scale = scale, shape = shape,
-                 .variable = "continuous")
+  dst_parametric(
+    "gpd", location = location, scale = scale, shape = shape,
+    .variable = "continuous", .env = NULL
+  )
 }

@@ -14,6 +14,8 @@ dst_beta <- function(shape1, shape2) {
 	if (shape2 <= 0) {
 		stop("shape2 must be positive.")
 	}
-	dst_parametric("beta", shape1 = shape1, shape2 = shape2,
-				   .variable = "continuous")
+	dst_parametric(
+	  "beta", shape1 = shape1, shape2 = shape2,
+	  .variable = "continuous", .env = "package:stats"
+	)
 }
