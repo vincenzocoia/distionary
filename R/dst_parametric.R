@@ -78,7 +78,9 @@ eval_cdf.parametric <- function(distribution, at) {
 #' @export
 eval_survival.parametric <- function(distribution, at) {
 	function_name <- paste0("p", distribution$name)
-	pdist_formals <- names(formals(function_name, envir = distribution$env))
+	pdist_formals <- names(formals(
+	  function_name, envir = as.environment(distribution$env)
+	))
 	if ("lower.tail" %in% pdist_formals) {
 		rlang::exec(
 		  function_name, at, !!!distribution$parameters, lower.tail = FALSE,

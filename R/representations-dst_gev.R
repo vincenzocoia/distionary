@@ -1,39 +1,76 @@
+#' #' @export
+#' eval_cdf.gev <- function(distribution, at) {
+#'   r <- range(distribution)
+#'   with(parameters(distribution), {
+#'     t <- gev_t_function(at, location = location, scale = scale, shape = shape)
+#'     res <- exp(-t)
+#'     res[at < r[1L]] <- 0
+#'     res[at > r[2L]] <- 1
+#'     res
+#'   })
+#' }
+
+#' Representations of the Generalized Extreme Value Distribution
+#'
+#' @rdname gev_raw
 #' @export
-eval_cdf.gev <- function(distribution, at) {
-  r <- range(distribution)
-  with(parameters(distribution), {
-    t <- gev_t_function(at, location = location, scale = scale, shape = shape)
-    res <- exp(-t)
-    res[at < r[1L]] <- 0
-    res[at > r[2L]] <- 1
-    res
-  })
+pgev <- function(q, location, scale, shape) {
+  r <- rlang::eval_tidy(.quantities[["gev"]][["range"]])
+  t <- gev_t_function(q, location = location, scale = scale, shape = shape)
+  res <- exp(-t)
+  res[q < r[1L]] <- 0
+  res[q > r[2L]] <- 1
+  res
 }
 
+#' #' @export
+#' eval_quantile.gev <- function(distribution, at) {
+#'   with(parameters(distribution), {
+#'     invalid_at <- at < 0 | at > 1
+#'     if (shape == 0) {
+#'       res <- location - scale * log(-log(at))
+#'     } else {
+#'       res <- location + scale * ((-log(at))^(-shape) - 1) / shape
+#'     }
+#'     res[invalid_at] <- NaN
+#'     res
+#'   })
+#' }
+
+#' @rdname gev_raw
 #' @export
-eval_quantile.gev <- function(distribution, at) {
-  with(parameters(distribution), {
-    invalid_at <- at < 0 | at > 1
-    if (shape == 0) {
-      res <- location - scale * log(-log(at))
-    } else {
-      res <- location + scale * ((-log(at))^(-shape) - 1) / shape
-    }
-    res[invalid_at] <- NaN
-    res
-  })
+qgev <- function(p, location, scale, shape) {
+  invalid_at <- p < 0 | p > 1
+  if (shape == 0) {
+    res <- location - scale * log(-log(p))
+  } else {
+    res <- location + scale * ((-log(p))^(-shape) - 1) / shape
+  }
+  res[invalid_at] <- NaN
+  res
 }
 
+#' #' @export
+#' eval_density.gev <- function(distribution, at, strict = TRUE) {
+#'   r <- range(distribution)
+#'   with(parameters(distribution), {
+#'     t <- gev_t_function(at, location = location, scale = scale, shape = shape)
+#'     res <- t^(shape + 1) / scale * exp(-t)
+#'     res[at < r[1L]] <- 0
+#'     res[at > r[2L]] <- 0
+#'     res
+#'   })
+#' }
+
+#' @rdname gev_raw
 #' @export
-eval_density.gev <- function(distribution, at, strict = TRUE) {
-  r <- range(distribution)
-  with(parameters(distribution), {
-    t <- gev_t_function(at, location = location, scale = scale, shape = shape)
-    res <- t^(shape + 1) / scale * exp(-t)
-    res[at < r[1L]] <- 0
-    res[at > r[2L]] <- 0
-    res
-  })
+dgev <- function(x, location, scale, shape) {
+  r <- rlang::eval_tidy(.quantities[["gev"]][["range"]])
+  t <- gev_t_function(x, location = location, scale = scale, shape = shape)
+  res <- t^(shape + 1) / scale * exp(-t)
+  res[x <= r[1L]] <- 0
+  res[x > r[2L]] <- 0
+  res
 }
 
 #' 't()' function for calculating GEV quantities
