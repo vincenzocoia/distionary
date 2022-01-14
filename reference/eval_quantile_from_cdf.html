@@ -69,19 +69,15 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">eval_quantile_from_cdf</span><span class="op">(</span><span class="va">cdf</span>, <span class="va">discon</span>, <span class="va">at</span>, <span class="va">tol</span>, <span class="va">maxiter</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">eval_quantile_from_cdf</span><span class="op">(</span><span class="va">distribution</span>, <span class="va">at</span>, <span class="va">tol</span>, <span class="va">maxiter</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>cdf</dt>
-<dd><p>Function representing the cdf.</p></dd>
-<dt>discon</dt>
-<dd><p>A data frame of discontinuities, as in the
-output of <code>discontinuities()</code>.</p></dd>
+    <dl><dt>distribution</dt>
+<dd><p>A distribution having access to a cdf.</p></dd>
 <dt>at</dt>
-<dd><p>A vector of values for which to evaluate the
-quantile function.</p></dd>
+<dd><p>A vector of values for which to evaluate the quantile function.</p></dd>
 <dt>tol, maxiter</dt>
 <dd><p>Tolerance and maximum number of iterations</p></dd>
 </dl></div>
@@ -98,7 +94,7 @@ quantile function.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>

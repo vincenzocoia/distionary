@@ -49,6 +49,9 @@
     <loc>/reference/density.html</loc>
   </url>
   <url>
+    <loc>/reference/directional_inverse.html</loc>
+  </url>
+  <url>
     <loc>/reference/discrete_helpers.html</loc>
   </url>
   <url>
@@ -127,6 +130,9 @@
     <loc>/reference/dst_weibull.html</loc>
   </url>
   <url>
+    <loc>/reference/encapsulate_p.html</loc>
+  </url>
+  <url>
     <loc>/reference/enframe_general.html</loc>
   </url>
   <url>
@@ -137,6 +143,9 @@
   </url>
   <url>
     <loc>/reference/flexible_cdf.html</loc>
+  </url>
+  <url>
+    <loc>/reference/gev_raw.html</loc>
   </url>
   <url>
     <loc>/reference/gev_t_function.html</loc>
@@ -151,10 +160,10 @@
     <loc>/reference/is_finite.html</loc>
   </url>
   <url>
-    <loc>/reference/left_inverse.html</loc>
+    <loc>/reference/moments.html</loc>
   </url>
   <url>
-    <loc>/reference/moments.html</loc>
+    <loc>/reference/narrow_by_discretes.html</loc>
   </url>
   <url>
     <loc>/reference/new_distribution.html</loc>
@@ -175,16 +184,13 @@
     <loc>/reference/parametric.html</loc>
   </url>
   <url>
-    <loc>/reference/pdq_functions_all_exist.html</loc>
+    <loc>/reference/pdq_functions_exist.html</loc>
   </url>
   <url>
     <loc>/reference/plot.dst.html</loc>
   </url>
   <url>
     <loc>/reference/pmf.html</loc>
-  </url>
-  <url>
-    <loc>/reference/practical_limits.html</loc>
   </url>
   <url>
     <loc>/reference/quantile.html</loc>

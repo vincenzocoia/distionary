@@ -87,6 +87,10 @@
         </td>
         <td><p>Probability Density Function</p></td>
       </tr><tr><td>
+          <p><code><a href="directional_inverse.html">directional_inverse()</a></code> </p>
+        </td>
+        <td><p>Algorithm to Compute a Directional Inverse</p></td>
+      </tr><tr><td>
           <p><code><a href="discrete_helpers.html">next_discrete_finite()</a></code> <code><a href="discrete_helpers.html">prev_discrete_finite()</a></code> <code><a href="discrete_helpers.html">next_discrete_natural()</a></code> <code><a href="discrete_helpers.html">prev_discrete_natural()</a></code> </p>
         </td>
         <td><p>Helper functions for finding discrete values</p></td>
@@ -191,6 +195,10 @@
         </td>
         <td><p>Weibull Distribution</p></td>
       </tr><tr><td>
+          <p><code><a href="encapsulate_p.html">encapsulate_p()</a></code> </p>
+        </td>
+        <td><p>Find a range of possible outcomes</p></td>
+      </tr><tr><td>
           <p><code><a href="enframe_general.html">enframe_general()</a></code> </p>
         </td>
         <td><p>Enframe a distributional representation's evaluation</p></td>
@@ -207,6 +215,21 @@
         </td>
         <td><p>Find the probability left or right of a number</p></td>
       </tr><tr><td>
+          <p><code><a href="gev_raw.html">pgev()</a></code> <code><a href="gev_raw.html">qgev()</a></code> <code><a href="gev_raw.html">dgev()</a></code> </p>
+        </td>
+        <td><p>#' @export
+eval_cdf.gev &lt;- function(distribution, at) 
+r &lt;- range(distribution)
+with(parameters(distribution), 
+t &lt;- gev_t_function(at, location = location, scale = scale, shape = shape)
+res &lt;- exp(-t)
+res[at &lt; r<a href="https://rdrr.io/r/base/NumericConstants.html" class="external-link">1L</a>] &lt;- 0
+res[at &gt; r2L] &lt;- 1
+res
+)
+
+Representations of the Generalized Extreme Value Distribution</p></td>
+      </tr><tr><td>
           <p><code><a href="gev_t_function.html">gev_t_function()</a></code> </p>
         </td>
         <td><p>'t()' function for calculating GEV quantities</p></td>
@@ -219,13 +242,13 @@
         </td>
         <td><p>Is a distribution a finite distribution?</p></td>
       </tr><tr><td>
-          <p><code><a href="left_inverse.html">left_inverse()</a></code> </p>
-        </td>
-        <td><p>Algorithm to Compute Left Inverse</p></td>
-      </tr><tr><td>
           <p><code><a href="moments.html">kurtosis_raw()</a></code> <code><a href="moments.html">kurtosis_exc()</a></code> <code><a href="moments.html">mean(<i>&lt;dst&gt;</i>)</a></code> <code><a href="moments.html">median(<i>&lt;dst&gt;</i>)</a></code> <code><a href="moments.html">skewness()</a></code> <code><a href="moments.html">stdev()</a></code> <code><a href="moments.html">variance()</a></code> </p>
         </td>
         <td><p>Moments of a Distribution</p></td>
+      </tr><tr><td>
+          <p><code><a href="narrow_by_discretes.html">narrow_by_discretes()</a></code> </p>
+        </td>
+        <td><p>Narrow a range of possible values by a discrete</p></td>
       </tr><tr><td>
           <p><code><a href="new_distribution.html">new_distribution()</a></code> </p>
         </td>
@@ -251,7 +274,7 @@
         </td>
         <td><p>Parametric Distribution Objects</p></td>
       </tr><tr><td>
-          <p><code><a href="pdq_functions_all_exist.html">pdq_functions_all_exist()</a></code> </p>
+          <p><code><a href="pdq_functions_exist.html">pdq_functions_exist()</a></code> </p>
         </td>
         <td><p>Are there p/d/q functions available?</p></td>
       </tr><tr><td>
@@ -262,10 +285,6 @@
           <p><code><a href="pmf.html">eval_pmf()</a></code> <code><a href="pmf.html">enframe_pmf()</a></code> </p>
         </td>
         <td><p>Probability Mass Function</p></td>
-      </tr><tr><td>
-          <p><code><a href="practical_limits.html">get_higher()</a></code> <code><a href="practical_limits.html">get_lower()</a></code> </p>
-        </td>
-        <td><p>Find an Encapsulating Range of Quantiles</p></td>
       </tr><tr><td>
           <p><code><a href="quantile.html">eval_quantile()</a></code> <code><a href="quantile.html">enframe_quantile()</a></code> </p>
         </td>
@@ -307,7 +326,7 @@
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer></div>
