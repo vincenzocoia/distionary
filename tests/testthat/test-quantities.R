@@ -40,20 +40,20 @@ check_quantity <- function(distribution, name, tolerance = 1e-3,
 
 test_that("quantities align with numeric computations.", {
   distributions <- list(
-    # dst_norm(0, 1),
-    # dst_norm(4, 2),
-    # dst_pois(1),
-    # dst_pois(3),
-    # dst_pois(5),
-    # dst_unif(0, 1),
-    # dst_unif(-1, 1),
-    # dst_unif(-2, 0.8),
+    dst_norm(0, 1),
+    dst_norm(4, 2),
+    dst_pois(1),
+    dst_pois(3),
+    dst_pois(5),
+    dst_unif(0, 1),
+    dst_unif(-1, 1),
+    dst_unif(-2, 0.8)
     # dst_beta(2,3),
     # dst_beta(0.5,0.9),
     # dst_binom(10, 0.6),
     # dst_binom(8, 0.05),
     # dst_binom(2, 0.89),
-     dst_nbinom(6, 0.05) # Error: the integral is probably divergent
+    # dst_nbinom(6, 0.05) # Error: the integral is probably divergent
     # dst_nbinom(3, 0.87),
     # dst_nbinom(1.5, 0.5),
     # dst_gpd(0, 1, 1 / 4 - 0.01),
@@ -89,7 +89,7 @@ test_that("quantities align with numeric computations.", {
     # dst_t(4.2),
   )
   for (d in distributions) {
-    print(d$name)
+    # print(d$name)
     check_quantity(d, "mean")
     check_quantity(d, "variance")
     check_quantity(d, "skewness")

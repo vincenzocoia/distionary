@@ -24,9 +24,6 @@
 dst_parametric <- function(
 	.name, ..., .variable = c("unknown", "continuous", "discrete", "mixed"),
 	.env = parent.frame()) {
-  if (identical(.env, .GlobalEnv)) {
-    .env <- ".GlobalEnv"
-  }
   if (!pdq_functions_exist(.name)) {
     stop(
       'Could not find p/d/q functions for the distribution named ', .name, "."
@@ -39,7 +36,7 @@ dst_parametric <- function(
 	params <- lapply(dots, rlang::eval_tidy)
 	names(params) <- names(dots)
 	res <- list(name = .name,
-	            env = .env,
+	            env = as.environment(.env),
 	            parameters = params)
 	new_distribution(res, variable = v, class = c(.name, "parametric"))
 }
@@ -71,7 +68,7 @@ eval_cdf.parametric <- function(distribution, at) {
 	function_name <- paste0("p", distribution$name)
 	rlang::exec(
 	  function_name, at, !!!distribution$parameters,
-	  .env = as.environment(distribution$env)
+	  .env = distribution$env
 	)
 }
 
@@ -79,17 +76,17 @@ eval_cdf.parametric <- function(distribution, at) {
 eval_survival.parametric <- function(distribution, at) {
 	function_name <- paste0("p", distribution$name)
 	pdist_formals <- names(formals(
-	  function_name, envir = as.environment(distribution$env)
+	  function_name, envir = distribution$env
 	))
 	if ("lower.tail" %in% pdist_formals) {
 		rlang::exec(
 		  function_name, at, !!!distribution$parameters, lower.tail = FALSE,
-		  .env = as.environment(distribution$env)
+		  .env = distribution$env
 		)
 	} else {
 		1 - rlang::exec(
 		  function_name, at, !!!distribution$parameters,
-		  .env = as.environment(distribution$env)
+		  .env = distribution$env
 		)
 	}
 }
@@ -101,7 +98,7 @@ eval_density.parametric <- function(distribution, at, strict = TRUE) {
 		function_name <- paste0("d", distribution$name)
 		return(rlang::exec(
 		  function_name, at, !!!distribution$parameters,
-		  .env = as.environment(distribution$env)
+		  .env = distribution$env
 		))
 	}
 	if (strict) {
@@ -127,7 +124,7 @@ eval_pmf.parametric <- function(distribution, at, strict = TRUE) {
 		return(suppressWarnings(
 			rlang::exec(
 			  function_name, at, !!!distribution$parameters,
-			  .env = as.environment(distribution$env)
+			  .env = distribution$env
 			)
 		))
 	}
@@ -152,7 +149,7 @@ eval_quantile.parametric <- function(distribution, at) {
 	if (exists(function_name)) {
 	  rlang::exec(
 	    function_name, at, !!!distribution$parameters,
-	    .env = as.environment(distribution$env)
+	    .env = distribution$env
 	  )
 	} else {
 	  NextMethod()
@@ -165,7 +162,7 @@ realise.parametric <- function(distribution, n = 1) {
 	if (exists(function_name)) {
 	  rlang::exec(
 	    function_name, n, !!!distribution$parameters,
-	    .env = as.environment(distribution$env)
+	    .env = distribution$env
 	  )
 	} else {
 	  NextMethod()
