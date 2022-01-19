@@ -234,6 +234,35 @@ Representations of the Generalized Extreme Value Distribution</p></td>
         </td>
         <td><p>'t()' function for calculating GEV quantities</p></td>
       </tr><tr><td>
+          <p><code><a href="gpd_raw.html">pgpd()</a></code> <code><a href="gpd_raw.html">qgpd()</a></code> <code><a href="gpd_raw.html">dgpd()</a></code> </p>
+        </td>
+        <td><p>#' @export
+eval_cdf.gpd &lt;- function(distribution, at) 
+with(parameters(distribution), 
+if (shape == 0) 
+left &lt;- at &lt; location
+z &lt;- (at - location) / scale
+res &lt;- 1 - exp(-z)
+resleft &lt;- 0
+res
+ else 
+if (shape &gt; 0) 
+rightend &lt;- Inf
+ else 
+rightend &lt;- location - scale / shape
+
+left &lt;- at &lt; location
+right &lt;- at &gt; rightend
+z &lt;- (at - location) / scale
+res &lt;- 1 - (1 + shape * z)^(-1 / shape)
+resleft &lt;- 0
+resright &lt;- 1
+res
+
+)
+
+Representations of the Generalized Pareto Distribution</p></td>
+      </tr><tr><td>
           <p><code><a href="hazard.html">eval_hazard()</a></code> <code><a href="hazard.html">enframe_hazard()</a></code> </p>
         </td>
         <td><p>Hazard Function</p></td>
