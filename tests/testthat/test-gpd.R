@@ -1,10 +1,10 @@
-test_that("cdf and pdf of GEV align via numerical derivative.", {
+test_that("cdf and pdf of GPD align via numerical derivative.", {
   d <- list(
-    dst_gev(0, 1, 1),
-    dst_gev(0, 1, 0),
-    dst_gev(0, 1, -1)
+    dst_gpd(0, 1, 1),
+    dst_gpd(0, 1, 0),
+    dst_gpd(0, 10, -1)
   )
-  x <- -5:5
+  x <- 1:11
   eps <- 1e-6
   for (i in seq_along(d)) {
     pdf <- eval_density(d[[i]], at = x)
@@ -15,11 +15,11 @@ test_that("cdf and pdf of GEV align via numerical derivative.", {
   }
 })
 
-test_that("cdf and qf of GEV align.", {
+test_that("cdf and qf of GPD align.", {
   d <- list(
-    dst_gev(0, 1, 1),
-    dst_gev(0, 1, 0),
-    dst_gev(0, 1, -1)
+    dst_gpd(0, 1, 1),
+    dst_gpd(0, 1, 0),
+    dst_gpd(0, 10, -1)
   )
   p <- 1:9/10
   for (i in seq_along(d)) {
@@ -29,11 +29,11 @@ test_that("cdf and qf of GEV align.", {
   }
 })
 
-test_that("quantile function of GEV is valid, validating the distribution.", {
+test_that("quantile function of GPD is valid, validating the distribution.", {
   d <- list(
-    dst_gev(0, 1, 1),
-    dst_gev(0, 1, 0),
-    dst_gev(0, 1, -1)
+    dst_gpd(0, 1, 1),
+    dst_gpd(0, 1, 0),
+    dst_gpd(0, 10, -1)
   )
   p <- 0:100/100
   for (i in seq_along(d)) {

@@ -13,6 +13,6 @@ dst_gpd <- function(location, scale, shape) {
 	}
   dst_parametric(
     "gpd", location = location, scale = scale, shape = shape,
-    .variable = "continuous", .env = NULL
+    .variable = "continuous", .env = "package:distionary"
   )
 }
