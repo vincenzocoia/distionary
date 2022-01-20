@@ -1,11 +1,12 @@
-#' Evaluate Quantiles using a CDF
+#' Evaluate Quantiles from a CDF
 #'
-#' Intended for internal use only.
+#' Intended for internal use only. Calls the `directional_inverse()`
+#' algorithm for each new entry of `at`.
 #'
 #' @param distribution A distribution having access to a cdf.
 #' @param at A vector of values for which to evaluate the quantile function.
-#' @param tol,maxiter Tolerance and maximum number of iterations
-#' @export
+#' @param tol,maxiter Tolerance (a small positive number) and maximum number
+#' of iterations
 eval_quantile_from_cdf <- function(distribution, at, tol, maxiter) {
   n <- length(at)
   if (n == 0) return(numeric(0L))
@@ -108,22 +109,19 @@ encapsulate_p <- function(distribution, p, direction) {
 
 #' Algorithm to Compute a Directional Inverse
 #'
-#' Calculates the smallest value for which a function
-#' \code{f} evaluates to be greater than or equal to
-#' \code{y} -- that is, the left inverse of \code{f}
-#' at \code{y}. Intended for internal use only.
+#' Calculates the smallest value for which a function `f`
+#' evaluates to be greater than or equal to `y` -- that is,
+#' the left inverse of `f` at `y`. Intended for internal use only.
 
 #' @param p Single value for which to calculate the left inverse.
 #' @param low,high Single numeric values forming a range
 #' within which to search for the solution.
-#' @param direction One of `"left"` for calculating left-inverse, or
-#' `"right"` for calculating right-inverse.
 #' @details This algorithm works by progressively
 #' cutting the specified range in half, so that the width
 #' of the range after k iterations is 1/2^k times the
 #' original width.
 #' @export
-#' @inheritParams eval_quantile_from_cdf,encapsulate_p
+#' @inheritParams eval_quantile_from_cdf
 directional_inverse <- function(distribution, p, low, high, tol, maxiter,
                                 direction) {
   stopifnot(low <= high)
@@ -189,14 +187,15 @@ directional_inverse <- function(distribution, p, low, high, tol, maxiter,
 #' on an intermediate discrete value, and zeroes-in on that
 #' discrete value if it's the solution.
 #'
-
 #' @param p Value of the cdf to calculate inverse at.
+#' @param low,high Single numerics specifying the lower and upper bound
+#' to look between.
 #' @param discrete Numeric value indicating a discrete point to possibly
 #' narrow the range by. Could be `NA`; could have length 0; could be
 #' outside of the range `c(low, high)`.
 #' @note The benefit of this step when inverting a cdf is to return
 #' the exact discrete value if `p` falls within its jump discontinuity.
-#' @inheritParams eval_quantile_from_cdf,encapsulate_p
+#' @inheritParams encapsulate_p
 narrow_by_discretes <- function(distribution, p, low, high, discrete,
                                 direction) {
   if (is.na(discrete) || !length(discrete) ||

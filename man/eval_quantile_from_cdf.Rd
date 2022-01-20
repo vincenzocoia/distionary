@@ -2,7 +2,7 @@
 % Please edit documentation in R/eval_quantile_from_cdf.R
 \name{eval_quantile_from_cdf}
 \alias{eval_quantile_from_cdf}
-\title{Evaluate Quantiles using a CDF}
+\title{Evaluate Quantiles from a CDF}
 \usage{
 eval_quantile_from_cdf(distribution, at, tol, maxiter)
 }
@@ -11,8 +11,10 @@ eval_quantile_from_cdf(distribution, at, tol, maxiter)
 
 \item{at}{A vector of values for which to evaluate the quantile function.}
 
-\item{tol, maxiter}{Tolerance and maximum number of iterations}
+\item{tol, maxiter}{Tolerance (a small positive number) and maximum number
+of iterations}
 }
 \description{
-Intended for internal use only.
+Intended for internal use only. Calls the \code{directional_inverse()}
+algorithm for each new entry of \code{at}.
 }

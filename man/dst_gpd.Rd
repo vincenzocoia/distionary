@@ -7,7 +7,11 @@
 dst_gpd(location, scale, shape)
 }
 \arguments{
-\item{location, scale, shape}{Parameters of the GPD.}
+\item{location}{Location parameter; numeric.}
+
+\item{scale}{Scale parameter; positive numeric.}
+
+\item{shape}{Shape parameter; numeric.}
 }
 \value{
 Object of class "dst" of a GPD.

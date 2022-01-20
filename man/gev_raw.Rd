@@ -4,18 +4,7 @@
 \alias{pgev}
 \alias{qgev}
 \alias{dgev}
-\title{#' @export
-eval_cdf.gev <- function(distribution, at) {
-r <- range(distribution)
-with(parameters(distribution), {
-t <- gev_t_function(at, location = location, scale = scale, shape = shape)
-res <- exp(-t)
-res[at < r\link{1L}] <- 0
-res[at > r\link{2L}] <- 1
-res
-})
-}
-Representations of the Generalized Extreme Value Distribution}
+\title{Representations of the Generalized Extreme Value Distribution}
 \usage{
 pgev(q, location, scale, shape)
 
@@ -23,43 +12,22 @@ qgev(p, location, scale, shape)
 
 dgev(x, location, scale, shape)
 }
+\arguments{
+\item{location}{Location parameter; numeric.}
+
+\item{scale}{Scale parameter; positive numeric.}
+
+\item{shape}{Shape parameter; numeric.}
+
+\item{p}{Vector of probabilities.}
+
+\item{x, q}{Vector of quantiles.}
+}
 \description{
-#' @export
-eval_cdf.gev <- function(distribution, at) {
-r <- range(distribution)
-with(parameters(distribution), {
-t <- gev_t_function(at, location = location, scale = scale, shape = shape)
-res <- exp(-t)
-res[at < r\link{1L}] <- 0
-res[at > r\link{2L}] <- 1
-res
-})
-}
 Representations of the Generalized Extreme Value Distribution
-
-#' @export
-eval_quantile.gev <- function(distribution, at) {
-with(parameters(distribution), {
-invalid_at <- at < 0 | at > 1
-if (shape == 0) {
-res <- location - scale * log(-log(at))
-} else {
-res <- location + scale * ((-log(at))^(-shape) - 1) / shape
 }
-res\link{invalid_at} <- NaN
-res
-})
-}
-
-#' @export
-eval_density.gev <- function(distribution, at, strict = TRUE) {
-r <- range(distribution)
-with(parameters(distribution), {
-t <- gev_t_function(at, location = location, scale = scale, shape = shape)
-res <- t^(shape + 1) / scale * exp(-t)
-res[at < r\link{1L}] <- 0
-res[at > r\link{2L}] <- 0
-res
-})
-}
+\examples{
+pgev(1:10, 0, 1, 1)
+dgev(1:10, 0, 2, 0)
+qgev(1:9 / 10, 2, 10, -2)
 }

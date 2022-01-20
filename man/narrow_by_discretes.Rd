@@ -7,11 +7,19 @@
 narrow_by_discretes(distribution, p, low, high, discrete, direction)
 }
 \arguments{
+\item{distribution}{A distribution having access to a cdf.}
+
 \item{p}{Value of the cdf to calculate inverse at.}
+
+\item{low, high}{Single numerics specifying the lower and upper bound
+to look between.}
 
 \item{discrete}{Numeric value indicating a discrete point to possibly
 narrow the range by. Could be \code{NA}; could have length 0; could be
 outside of the range \code{c(low, high)}.}
+
+\item{direction}{One of \code{"left"} for calculating left-inverse, or
+\code{"right"} for calculating right-inverse.}
 }
 \description{
 When finding the inverse of the cdf at \code{p}, and with the solution

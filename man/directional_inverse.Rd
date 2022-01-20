@@ -7,19 +7,23 @@
 directional_inverse(distribution, p, low, high, tol, maxiter, direction)
 }
 \arguments{
+\item{distribution}{A distribution having access to a cdf.}
+
 \item{p}{Single value for which to calculate the left inverse.}
 
 \item{low, high}{Single numeric values forming a range
 within which to search for the solution.}
 
-\item{direction}{One of \code{"left"} for calculating left-inverse, or
-\code{"right"} for calculating right-inverse.}
+\item{tol}{Tolerance (a small positive number) and maximum number
+of iterations}
+
+\item{maxiter}{Tolerance (a small positive number) and maximum number
+of iterations}
 }
 \description{
-Calculates the smallest value for which a function
-\code{f} evaluates to be greater than or equal to
-\code{y} -- that is, the left inverse of \code{f}
-at \code{y}. Intended for internal use only.
+Calculates the smallest value for which a function \code{f}
+evaluates to be greater than or equal to \code{y} -- that is,
+the left inverse of \code{f} at \code{y}. Intended for internal use only.
 }
 \details{
 This algorithm works by progressively

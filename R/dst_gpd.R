@@ -2,7 +2,9 @@
 #'
 #' Makes a distribution belonging to the family of
 #' generalized Pareto distributions (GPD).
-#' @param location,scale,shape Parameters of the GPD.
+#' @param location Location parameter; numeric.
+#' @param scale Scale parameter; positive numeric.
+#' @param shape Shape parameter; numeric.
 #' @return Object of class "dst" of a GPD.
 #' @examples
 #' dst_gpd(0, 1, 1)
