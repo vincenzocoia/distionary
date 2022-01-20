@@ -53,12 +53,12 @@ dst_parametric <- function(
 #' @return `TRUE` if p/d/q functions are all available for this distribution;
 #' `FALSE` otherwise.
 pdq_functions_exist <- function(name) {
-  p_exists <- exists(paste0("p", name), envir = parent.frame(2)) ||
+  p_exists <- exists(paste0("p", name), where = parent.frame(2)) ||
     exists(paste0("eval_cdf.", name))
-  d_exists <- exists(paste0("d", name), envir = parent.frame(2)) ||
+  d_exists <- exists(paste0("d", name), where = parent.frame(2)) ||
     exists(paste0("eval_density.", name)) ||
     exists(paste0("eval_pmf.", name))
-  # q_exists <- exists(paste0("q", name), envir = parent.frame(2)) ||
+  # q_exists <- exists(paste0("q", name), where = parent.frame(2)) ||
   #   exists(paste0("eval_quantile.", name))
   p_exists || d_exists
 }
