@@ -116,12 +116,14 @@ encapsulate_p <- function(distribution, p, direction) {
 #' @param p Single value for which to calculate the left inverse.
 #' @param low,high Single numeric values forming a range
 #' within which to search for the solution.
+#' @param tol,maxiter Tolerance (a small positive number) and maximum number
+#' of iterations
 #' @details This algorithm works by progressively
 #' cutting the specified range in half, so that the width
 #' of the range after k iterations is 1/2^k times the
 #' original width.
 #' @export
-#' @inheritParams eval_quantile_from_cdf
+#' @inheritParams encapsulate_p
 directional_inverse <- function(distribution, p, low, high, tol, maxiter,
                                 direction) {
   stopifnot(low <= high)

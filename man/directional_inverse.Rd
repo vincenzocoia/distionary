@@ -14,11 +14,11 @@ directional_inverse(distribution, p, low, high, tol, maxiter, direction)
 \item{low, high}{Single numeric values forming a range
 within which to search for the solution.}
 
-\item{tol}{Tolerance (a small positive number) and maximum number
+\item{tol, maxiter}{Tolerance (a small positive number) and maximum number
 of iterations}
 
-\item{maxiter}{Tolerance (a small positive number) and maximum number
-of iterations}
+\item{direction}{One of \code{"left"} for calculating left-inverse, or
+\code{"right"} for calculating right-inverse.}
 }
 \description{
 Calculates the smallest value for which a function \code{f}
