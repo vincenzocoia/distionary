@@ -205,7 +205,7 @@
       </tr><tr><td>
           <p><code><a href="eval_quantile_from_cdf.html">eval_quantile_from_cdf()</a></code> </p>
         </td>
-        <td><p>Evaluate Quantiles using a CDF</p></td>
+        <td><p>Evaluate Quantiles from a CDF</p></td>
       </tr><tr><td>
           <p><code><a href="evi.html">evi()</a></code> </p>
         </td>
@@ -217,18 +217,7 @@
       </tr><tr><td>
           <p><code><a href="gev_raw.html">pgev()</a></code> <code><a href="gev_raw.html">qgev()</a></code> <code><a href="gev_raw.html">dgev()</a></code> </p>
         </td>
-        <td><p>#' @export
-eval_cdf.gev &lt;- function(distribution, at) 
-r &lt;- range(distribution)
-with(parameters(distribution), 
-t &lt;- gev_t_function(at, location = location, scale = scale, shape = shape)
-res &lt;- exp(-t)
-res[at &lt; r<a href="https://rdrr.io/r/base/NumericConstants.html" class="external-link">1L</a>] &lt;- 0
-res[at &gt; r2L] &lt;- 1
-res
-)
-
-Representations of the Generalized Extreme Value Distribution</p></td>
+        <td><p>Representations of the Generalized Extreme Value Distribution</p></td>
       </tr><tr><td>
           <p><code><a href="gev_t_function.html">gev_t_function()</a></code> </p>
         </td>
@@ -236,32 +225,7 @@ Representations of the Generalized Extreme Value Distribution</p></td>
       </tr><tr><td>
           <p><code><a href="gpd_raw.html">pgpd()</a></code> <code><a href="gpd_raw.html">qgpd()</a></code> <code><a href="gpd_raw.html">dgpd()</a></code> </p>
         </td>
-        <td><p>#' @export
-eval_cdf.gpd &lt;- function(distribution, at) 
-with(parameters(distribution), 
-if (shape == 0) 
-left &lt;- at &lt; location
-z &lt;- (at - location) / scale
-res &lt;- 1 - exp(-z)
-resleft &lt;- 0
-res
- else 
-if (shape &gt; 0) 
-rightend &lt;- Inf
- else 
-rightend &lt;- location - scale / shape
-
-left &lt;- at &lt; location
-right &lt;- at &gt; rightend
-z &lt;- (at - location) / scale
-res &lt;- 1 - (1 + shape * z)^(-1 / shape)
-resleft &lt;- 0
-resright &lt;- 1
-res
-
-)
-
-Representations of the Generalized Pareto Distribution</p></td>
+        <td><p>Representations of the Generalized Pareto Distribution</p></td>
       </tr><tr><td>
           <p><code><a href="hazard.html">eval_hazard()</a></code> <code><a href="hazard.html">enframe_hazard()</a></code> </p>
         </td>

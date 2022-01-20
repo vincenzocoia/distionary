@@ -80,12 +80,20 @@ discrete value if it's the solution.</p>
 
     <div id="arguments">
     <h2>Arguments</h2>
-    <dl><dt>p</dt>
+    <dl><dt>distribution</dt>
+<dd><p>A distribution having access to a cdf.</p></dd>
+<dt>p</dt>
 <dd><p>Value of the cdf to calculate inverse at.</p></dd>
+<dt>low, high</dt>
+<dd><p>Single numerics specifying the lower and upper bound
+to look between.</p></dd>
 <dt>discrete</dt>
 <dd><p>Numeric value indicating a discrete point to possibly
 narrow the range by. Could be <code>NA</code>; could have length 0; could be
 outside of the range <code>c(low, high)</code>.</p></dd>
+<dt>direction</dt>
+<dd><p>One of <code>"left"</code> for calculating left-inverse, or
+<code>"right"</code> for calculating right-inverse.</p></dd>
 </dl></div>
     <div id="note">
     <h2>Note</h2>
