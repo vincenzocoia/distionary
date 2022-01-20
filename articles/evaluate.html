@@ -117,8 +117,8 @@
 <span class="co">#&gt; [1] -0.5  0.5</span>
 <span class="co"># Get sample of size 10:</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span>, min <span class="op">=</span> <span class="va">a</span>, max <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
-<span class="co">#&gt;  [1] -0.008214094 -0.761170418 -0.287865369 -0.276719643 -0.282253751</span>
-<span class="co">#&gt;  [6] -0.487419717  0.098413801 -0.789351657 -0.258810510 -0.670351840</span></code></pre></div>
+<span class="co">#&gt;  [1]  0.02333458  0.56466421  0.41474193  0.23880296  0.74061372  0.83994657</span>
+<span class="co">#&gt;  [7] -0.83453136 -0.22361602 -0.91378455 -0.49808119</span></code></pre></div>
 <p>With <code>distplyr</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dst_unif.html">dst_unif</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>
@@ -127,8 +127,8 @@
 <span class="fu"><a href="../reference/quantile.html">eval_quantile</a></span><span class="op">(</span><span class="va">d</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] -0.5  0.5</span>
 <span class="fu"><a href="../reference/realise.html">realise</a></span><span class="op">(</span><span class="va">d</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  0.64073081 -0.79993567  0.12419116 -0.72060324  0.13370097 -0.06256776</span>
-<span class="co">#&gt;  [7] -0.77730554  0.52324787  0.98610520 -0.74025036</span></code></pre></div>
+<span class="co">#&gt;  [1] -0.439259122 -0.589850678 -0.339393474  0.692974125 -0.456928654</span>
+<span class="co">#&gt;  [6]  0.660729103 -0.827097081 -0.008071579 -0.679662080  0.680633948</span></code></pre></div>
 <div class="section level2">
 <h2 id="functional-representations-of-a-distribution">Functional Representations of a Distribution<a class="anchor" aria-label="anchor" href="#functional-representations-of-a-distribution"></a>
 </h2>
