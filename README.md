@@ -12,6 +12,8 @@ status](https://www.r-pkg.org/badges/version/distionary)](https://CRAN.R-project
 [![Codecov test
 coverage](https://codecov.io/gh/vincenzocoia/distionary/branch/main/graph/badge.svg)](https://codecov.io/gh/vincenzocoia/distionary?branch=main)
 [![R-CMD-check](https://github.com/vincenzocoia/distionary/workflows/R-CMD-check/badge.svg)](https://github.com/vincenzocoia/distionary/actions)
+[![License:
+MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://cran.r-project.org/web/licenses/MIT)
 <!-- badges: end -->
 
 distionary:
