@@ -35,11 +35,18 @@ If infinite values satisfy the query, an error is thrown;
 when asking for the integer that comes before infinity.
 
 For \code{num_discretes()}, a single non-negative integer, possibly infinite.
+Possibly also \code{NA_integer_} if there's not enough information to
+determine this.
+
+For \code{has_infinite_discretes()}, a single logical, possibly \code{NA} if
+there's not enough information to determine this.
 }
 \description{
 \code{next_discrete()} and \code{prev_discrete()} find the \code{n} discrete values
 in a distribution next to a reference point. \code{num_discretes()} finds
-the number of discrete values within a range.
+the number of discrete values within a range. \code{has_infinite_discretes()}
+checks whether there are an infinite amount of discrete values between
+a range of values.
 }
 \examples{
 next_discrete(dst_pois(1), from = 1.3)

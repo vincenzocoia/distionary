@@ -16,7 +16,10 @@ dst_gamma <- function(shape, rate) {
   if (rate <= 0) {
     stop("rate parameter must be positive.")
   }
-  dst_parametric("gamma", shape = shape, rate = rate, .variable = "continuous")
+  dst_parametric(
+    "gamma", shape = shape, rate = rate,
+    .variable = "continuous", .env = "package:stats"
+  )
 }
 
 

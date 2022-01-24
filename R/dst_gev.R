@@ -15,6 +15,6 @@ dst_gev <- function(location, scale, shape) {
   }
   dst_parametric(
     "gev", location = location, scale = scale, shape = shape,
-    .variable = "continuous"
+    .variable = "continuous", .env = "package:distionary"
   )
 }

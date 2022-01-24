@@ -21,9 +21,8 @@ dst_hyper <- function(K, N, n){
   if (n < 0){
     stop('n must be non-negative')
   }
-  dst_parametric('hyper',
-                 m = K,
-                 n = N - K,
-                 k = n,
-                 .variable = "discrete")
+  dst_parametric(
+    'hyper', m = K, n = N - K, k = n,
+    .variable = "discrete", .env = "package:stats"
+  )
 }

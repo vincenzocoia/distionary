@@ -13,7 +13,9 @@ dst_exp <- function(rate) {
   if (rate <= 0) {
     stop('rate must be greater than 0.')
   }
-  dst_parametric("exp", rate = rate, .variable = "continuous")
+  dst_parametric(
+    "exp", rate = rate, .variable = "continuous", .env = "package:stats"
+  )
 }
 
 

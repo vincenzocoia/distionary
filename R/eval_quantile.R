@@ -16,8 +16,7 @@ eval_quantile <- function(distribution, at) UseMethod("eval_quantile")
 
 #' @export
 eval_quantile.dst <- function(distribution, at) {
-	cdf <- representation_as_function(distribution, "cdf")
-	eval_quantile_from_cdf(cdf, at, tol = 1e-6, maxiter = 1000)
+	eval_quantile_from_cdf(distribution, at = at, tol = 1e-9, maxiter = 200)
 }
 
 #' @rdname quantile

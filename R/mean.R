@@ -25,6 +25,12 @@
 #' @export
 mean.dst <- function(x, ...) {
   qf <- representation_as_function(x, "quantile")
-  int <- stats::integrate(qf, lower = 0, upper = 1, ...)
+  int <- try(stats::integrate(qf, lower = 0, upper = 1, ...))
+  if (inherits(int, "try-error")) {
+    warning("Integral did not converge. This might mean that the mean does
+            not exist, or that the integral simply did not converge.
+            Returning NaN.")
+    return(NaN)
+  }
   int$value
 }

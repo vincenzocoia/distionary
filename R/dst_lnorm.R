@@ -16,6 +16,8 @@ dst_lnorm <- function(meanlog, variancelog) {
 			stop("'variancelog' parameter must be non-negative.")
 		}
 	}
-	dst_parametric("lnorm", meanlog = meanlog, sdlog = sqrt(variancelog),
-				   .variable = "continuous")
+	dst_parametric(
+	  "lnorm", meanlog = meanlog, sdlog = sqrt(variancelog),
+	  .variable = "continuous", .env = "package:stats"
+	)
 }

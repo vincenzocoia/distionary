@@ -14,6 +14,8 @@ dst_unif <- function(min, max) {
 	if (max == min) {
 		return(dst_degenerate(min))
 	}
-	dst_parametric("unif", min = min, max = max,
-	               .variable = "continuous")
+  dst_parametric(
+    "unif", min = min, max = max,
+    .variable = "continuous", .env = "package:stats"
+  )
 }

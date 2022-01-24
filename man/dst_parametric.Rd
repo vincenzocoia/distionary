@@ -7,7 +7,8 @@
 dst_parametric(
   .name,
   ...,
-  .variable = c("unknown", "continuous", "discrete", "mixed")
+  .variable = c("unknown", "continuous", "discrete", "mixed"),
+  .env = parent.frame()
 )
 }
 \arguments{
@@ -20,14 +21,16 @@ parameter names of the \code{p}, \code{d}, \code{q}, \code{r} functions.}
 \item{.variable}{Type of random variable represented by the distribution.
 Warning: defaults to "unknown", where density, pmf, and hazard cannot be
 evaluated.}
+
+\item{.env}{Environment beginning the search path when looking for the
+representation, or the name of an environment (or any object that
+can be coerced to an environment with \code{as.environment()}.) Defaults to
+the calling environment.}
 }
 \description{
 When a distribution has \code{p}, \code{d}, \code{q}, \code{r} functions available (such as
 \code{pnorm()}, \code{dnorm()}, etc.), \code{dst_parametric()} creates a distribution
 that draws on these four functions.
-}
-\details{
-The \code{r} function is not needed, but is used if available.
 }
 \examples{
 d <- dst_parametric("norm", mean = 0, sd = 1, .variable = "continuous")

@@ -14,8 +14,8 @@ dst_cauchy <- function(location, scale){
   if (scale <= 0){
     stop('Scale must be positive')
   }
-  dst_parametric("cauchy",
-                 location = location,
-                 scale = scale,
-                 .variable = "continuous")
+  dst_parametric(
+    "cauchy", location = location, scale = scale,
+    .variable = "continuous", .env = "package:stats"
+  )
 }
