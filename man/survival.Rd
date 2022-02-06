@@ -49,6 +49,7 @@ Other distributional representations:
 \code{\link{eval_hazard}()},
 \code{\link{eval_odds}()},
 \code{\link{eval_pmf}()},
-\code{\link{eval_quantile}()}
+\code{\link{eval_quantile}()},
+\code{\link{eval_return}()}
 }
 \concept{distributional representations}

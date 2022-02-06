@@ -48,6 +48,7 @@ Other distributional representations:
 \code{\link{eval_hazard}()},
 \code{\link{eval_odds}()},
 \code{\link{eval_pmf}()},
+\code{\link{eval_return}()},
 \code{\link{eval_survival}()}
 }
 \concept{distributional representations}
