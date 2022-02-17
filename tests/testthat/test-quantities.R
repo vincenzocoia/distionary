@@ -53,26 +53,26 @@ test_that("quantities align with numeric computations.", {
     # dst_binom(10, 0.6),           ##***##
     # dst_binom(8, 0.05),           ##***##
     # dst_binom(2, 0.89)            ##***##
-    # dst_nbinom(6, 0.05)           # skewness: 1 vs NaN; kurtosis_exc: the integral is probably divergent
-    # dst_nbinom(3, 0.87)           # kurtosis_exc: the integral is probably divergent
+    # dst_nbinom(6, 0.05)           # TEST ONLY skewness: 1 vs NaN; kurtosis_exc: the integral is probably divergent
+    # dst_nbinom(3, 0.87)           # TEST ONLY kurtosis_exc: the integral is probably divergent
     # dst_nbinom(1.5, 0.5)          ##***##
     # dst_gpd(0, 1, 1 / 4 - 0.01),  ##***##
     # dst_gpd(0, 1, 1 / 3 - 0.01)   ##***##
-    # dst_gpd(0, 1, 1 / 2 - 0.01)   # skewness: Integral did not converge
-    # dst_gpd(0, 1, 1 - 0.01)       # skewness: Integral did not converge
-    # dst_gpd(0, 1, 1 + 0.01)       # mean/skewness: Integral did not converge.(Mean exists when param3 < 1)
+    # dst_gpd(0, 1, 1 / 2 - 0.01)   # TEST ONLY skewness: Integral did not converge (Skewness exists when param3 < 1/3)
+    # dst_gpd(0, 1, 1 - 0.01)       # TEST ONLY skewness: Integral did not converge (Skewness exists when param3 < 1/3)
+    # dst_gpd(0, 1, 1 + 0.01)       # TEST ONLY mean/skewness: Integral did not converge.(Mean exists when param3 < 1, Skewness exists when param3 < 1/3)
     # dst_gpd(0, 1, 0)              ##***##
     # dst_gpd(0, 1, -1)             ##***##
     # dst_exp(1)                    ##***##
     # dst_exp(2)                    ##***##
     # dst_geom(0.5)                 ##***##
     # dst_geom(0.2)                 ##***##
-    # dst_geom(1)                   # skewness/kurtosis_exc: need fixed.
-    # dst_geom(0.05)                # kurtosis_exc: "Error: the integral is probably divergent" every time we used 0.05
+    # dst_geom(1)                   # TEST ONLY skewness/kurtosis_exc: need fixed.(Skewness and Kurtosis do not exist when p = 1)
+    # dst_geom(0.05)                # TEST ONLY kurtosis_exc: "Error: the integral is probably divergent" every time we used 0.05
     # dst_chisq(3),                 ##***## remove hard-coded median for now
     # dst_chisq(5),                 ##***##
     # dst_chisq(1)                  ##***##
-    # dst_cauchy(0, 1)              # mean: need fixed. skewness: Integral did not converge. 
+    # dst_cauchy(0, 1)              # TEST ONLY mean: need fixed. skewness: Integral did not converge. (skewness is undefined for Cauchy)
     # dst_weibull(1, 1)             ##***##
     # dst_weibull(2, 2)             # kurtosis_exc: -8 vs 0
     # dst_weibull(1.1, 2.1)         # kurtosis_exc: -9 vs 4
