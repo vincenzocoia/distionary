@@ -56,7 +56,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -117,8 +117,8 @@
 <span class="co">#&gt; [1] -0.5  0.5</span>
 <span class="co"># Get sample of size 10:</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html" class="external-link">runif</a></span><span class="op">(</span><span class="fl">10</span>, min <span class="op">=</span> <span class="va">a</span>, max <span class="op">=</span> <span class="va">b</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  0.91038524 -0.16049989 -0.78150989 -0.07701850  0.31074846  0.40654381</span>
-<span class="co">#&gt;  [7]  0.34460117 -0.06937310 -0.06376678 -0.79870006</span></code></pre></div>
+<span class="co">#&gt;  [1] -0.1778164  0.3238118  0.1114840 -0.4260632 -0.7346138 -0.7568090</span>
+<span class="co">#&gt;  [7] -0.3548534 -0.9109847  0.4047323 -0.9145612</span></code></pre></div>
 <p>With <code>distplyr</code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/dst_unif.html">dst_unif</a></span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, <span class="fl">1</span><span class="op">)</span>
@@ -127,8 +127,8 @@
 <span class="fu"><a href="../reference/quantile.html">eval_quantile</a></span><span class="op">(</span><span class="va">d</span>, at <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; [1] -0.5  0.5</span>
 <span class="fu"><a href="../reference/realise.html">realise</a></span><span class="op">(</span><span class="va">d</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  0.3989948 -0.7993057 -0.5143767  0.9824114 -0.3933026  0.4862567</span>
-<span class="co">#&gt;  [7] -0.9983509 -0.3076065 -0.9354995 -0.5004238</span></code></pre></div>
+<span class="co">#&gt;  [1] -0.80847282 -0.36251765  0.64951527  0.30267274 -0.08418137  0.05626711</span>
+<span class="co">#&gt;  [7] -0.66872521 -0.60906092 -0.70810638 -0.21183249</span></code></pre></div>
 <div class="section level2">
 <h2 id="functional-representations-of-a-distribution">Functional Representations of a Distribution<a class="anchor" aria-label="anchor" href="#functional-representations-of-a-distribution"></a>
 </h2>
