@@ -146,10 +146,11 @@ eval_pmf.parametric <- function(distribution, at, strict = TRUE) {
 #' @export
 eval_quantile.parametric <- function(distribution, at) {
 	function_name <- paste0("q", distribution$name)
-	if (exists(function_name)) {
+	e <- distribution$env
+	if (exists(function_name, envir = e)) {
 	  rlang::exec(
 	    function_name, at, !!!distribution$parameters,
-	    .env = distribution$env
+	    .env = e
 	  )
 	} else {
 	  NextMethod()
@@ -159,10 +160,11 @@ eval_quantile.parametric <- function(distribution, at) {
 #' @export
 realise.parametric <- function(distribution, n = 1) {
 	function_name <- paste0("r", distribution$name)
-	if (exists(function_name)) {
+	e <- distribution$env
+	if (exists(function_name, envir = e)) {
 	  rlang::exec(
 	    function_name, n, !!!distribution$parameters,
-	    .env = distribution$env
+	    .env = e
 	  )
 	} else {
 	  NextMethod()
