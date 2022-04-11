@@ -13,8 +13,8 @@ pgev <- function(q, location, scale, shape) {
   r <- rlang::eval_tidy(.quantities[["gev"]][["range"]])
   t <- gev_t_function(q, location = location, scale = scale, shape = shape)
   res <- exp(-t)
-  res[q < r[1L]] <- 0
-  res[q > r[2L]] <- 1
+  res[q <= r[1L]] <- 0
+  res[q >= r[2L]] <- 1
   res
 }
 
